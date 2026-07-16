@@ -1,0 +1,172 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SEO from '../components/SEO.astro';
+import StatsGrid from '../components/StatsGrid.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
+import InteractiveProcessDemo from '../components/InteractiveProcessDemo.astro';
+import ModelsSection from '../components/ModelsSection.astro';
+import Carousel from '../components/Carousel.astro';
+import { getAllServices } from '../lib/content.js';
+import { site } from '../data/site.js';
+
+const services = await getAllServices();
+
+const title = 'AI Product Visuals for Ecommerce & Fashion Brands — Catalog, Lifestyle & Video';
+const description =
+  'VISUAILS turns a single product photo into ecommerce-ready catalog images, lifestyle campaigns, and product video with AI — up to 90% cheaper, 10x faster, 100% human-reviewed. Start with a €0.99 sample.';
+
+const galleryItems = Array.from({ length: 8 }, (_, i) => ({
+  image: `/images/visuails-gallery-${i + 1}.webp`,
+  alt: `VISUAILS campaign visual example ${i + 1}`,
+}));
+---
+
+<Layout>
+  <SEO slot="seo" title={title} description={description} path="/" />
+
+  <section class="hero container">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">AI-Powered Visual Production</p>
+        <h1>The Brand You Envisioned, <span class="accent">Visualized</span></h1>
+        <p style="font-size:1.1rem;">
+          Skip the studio, inconsistent AI tools, and the weeks of waiting — get a brand that
+          finally looks ready. One product photo in, a full catalog, campaign, or video out.
+        </p>
+        <div class="hero-actions">
+          <a href="/test-sample/" class="btn btn-primary">Start a Test Sample — €0.99</a>
+          <a href={site.whatsapp.link} target="_blank" rel="noopener" class="btn btn-whatsapp">Chat with Us</a>
+        </div>
+      </div>
+      <div class="transform-visual">
+        <div class="transform-flow">
+          <div class="phone-frame">
+            <img
+              src="/images/visuails-hero-before.webp"
+              alt="Raw product photo before VISUAILS transformation"
+              width="190"
+              height="380"
+            />
+          </div>
+          <span class="transform-arrow" aria-hidden="true">→</span>
+          <div class="after-card">
+            <img
+              src="/images/visuails-hero-after.webp"
+              alt="Finished VISUAILS campaign visual after transformation"
+              width="260"
+              height="345"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">See It In Action</p>
+        <h2>From One Photo <span class="accent">to Everything</span> You Need</h2>
+        <p>Upload once, then pick the result — every visual type is built from the same starting photo.</p>
+      </div>
+      <InteractiveProcessDemo />
+    </div>
+  </section>
+
+  <section id="services" class="section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Services</p>
+        <h2>Three Ways to Bring Your Product to Life</h2>
+      </div>
+      <div class="grid grid-3">
+        {services.map((s) => (
+          <a href={`/${s.slug}/`} class="card">
+            <h3>{s.name}</h3>
+            <p>{s.shortDescription}</p>
+            <p style="color:var(--brand-primary); font-weight:700; margin-bottom:0;">Explore {s.name} →</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <ModelsSection />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <StatsGrid />
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <BeforeAfter
+        beforeImage="/images/visuails-home-before.webp"
+        beforeAlt="Raw product photo before VISUAILS transformation"
+        afterImage="/images/visuails-home-after.webp"
+        afterAlt="Finished VISUAILS campaign visual after transformation"
+      />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">From Recent Campaigns</p>
+        <h2>A Look at What's Possible</h2>
+      </div>
+      <Carousel items={galleryItems} />
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="cta-band">
+        <p class="eyebrow" style="margin-bottom:8px;">Try Before You Order</p>
+        <h2>See Your Own Product, Transformed — €0.99</h2>
+        <p>One sample per business. No subscription, no commitment.</p>
+        <a href="/test-sample/" class="btn btn-primary">Start a Test Sample</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 48px; align-items:center;">
+        <div>
+          <p class="eyebrow">About VISUAILS</p>
+          <h2>Done-for-You Visuals, <span class="accent">Built to Look Established</span></h2>
+          <p>{site.about}</p>
+          <a href="/contact/" class="btn btn-secondary">Learn More</a>
+        </div>
+        <div class="card" style="padding:0; overflow:hidden;">
+          <img
+            src="/images/visuails-about.webp"
+            alt="VISUAILS studio process — from product photo to finished campaign visual"
+            width="600"
+            height="450"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="cta-band">
+        <p class="eyebrow" style="margin-bottom:8px;">Let's Grow Together</p>
+        <h2>Questions, Custom Requests, or Ready to Order?</h2>
+        <p>We usually reply within one business day.</p>
+        <div class="hero-actions" style="justify-content:center;">
+          <a href="/contact/" class="btn btn-primary">Contact Us</a>
+          <a href={site.whatsapp.link} target="_blank" rel="noopener" class="btn btn-whatsapp">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

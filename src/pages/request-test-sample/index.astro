@@ -1,0 +1,98 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SEO from '../../components/SEO.astro';
+import BreadcrumbSchema from '../../components/schema/BreadcrumbSchema.astro';
+import { getAllServices } from '../../lib/content.js';
+import { site } from '../../data/site.js';
+
+const services = await getAllServices();
+const allStyles = services.flatMap((s) => s.styles.map((st) => ({ service: s.name, ...st })));
+
+const title = 'Request Your Test Sample | VISUAILS';
+const description = 'Request a VISUAILS test sample and see how your product photo becomes a professional ecommerce visual.';
+const path = '/request-test-sample/';
+const breadcrumbs = [
+  { name: 'Home', url: site.url + '/' },
+  { name: 'Test Sample', url: site.url + '/test-sample/' },
+  { name: 'Request Sample', url: site.url + path },
+];
+---
+
+<Layout>
+  <SEO slot="seo" title={title} description={description} path={path} noindex={true} />
+  <BreadcrumbSchema slot="schema" items={breadcrumbs} />
+
+  <nav class="breadcrumbs container" aria-label="Breadcrumb">
+    <a href="/">Home</a><span class="sep">/</span>
+    <a href="/test-sample/">Test Sample</a><span class="sep">/</span>
+    <span>Request</span>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Claim Your Sample</p>
+        <h1>Request Your <span class="accent">€0.99</span> Test Sample</h1>
+        <p>
+          Fill in a few details below — after submitting, we'll open a pre-filled WhatsApp message
+          for you so you can send your product photo directly and confirm the €0.99 payment. This
+          form doesn't process payment yet; the full self-service flow is coming next.
+        </p>
+      </div>
+
+      <form id="sample-form" class="card" style="max-width:640px; margin:0 auto; display:flex; flex-direction:column; gap:18px;">
+        <div>
+          <label for="name" style="display:block; font-weight:600; margin-bottom:6px; font-size:0.9rem;">Your name</label>
+          <input type="text" id="name" name="name" required style="width:100%; padding:12px 14px; border-radius:10px; border:1px solid var(--border-subtle); background:var(--bg-raised); color:var(--text-primary);" />
+        </div>
+        <div>
+          <label for="business" style="display:block; font-weight:600; margin-bottom:6px; font-size:0.9rem;">Business / brand name</label>
+          <input type="text" id="business" name="business" required style="width:100%; padding:12px 14px; border-radius:10px; border:1px solid var(--border-subtle); background:var(--bg-raised); color:var(--text-primary);" />
+        </div>
+        <div>
+          <label for="email" style="display:block; font-weight:600; margin-bottom:6px; font-size:0.9rem;">Email</label>
+          <input type="email" id="email" name="email" required style="width:100%; padding:12px 14px; border-radius:10px; border:1px solid var(--border-subtle); background:var(--bg-raised); color:var(--text-primary);" />
+        </div>
+        <div>
+          <label for="style" style="display:block; font-weight:600; margin-bottom:6px; font-size:0.9rem;">Preferred style</label>
+          <select id="style" name="style" required style="width:100%; padding:12px 14px; border-radius:10px; border:1px solid var(--border-subtle); background:var(--bg-raised); color:var(--text-primary);">
+            <option value="">Select a style…</option>
+            {allStyles.map((st) => (
+              <option value={`${st.service} — ${st.name}`}>{st.service} — {st.name}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label for="notes" style="display:block; font-weight:600; margin-bottom:6px; font-size:0.9rem;">Anything else we should know?</label>
+          <textarea id="notes" name="notes" rows="3" style="width:100%; padding:12px 14px; border-radius:10px; border:1px solid var(--border-subtle); background:var(--bg-raised); color:var(--text-primary); font-family:inherit;"></textarea>
+        </div>
+        <p style="font-size:0.82rem; color:var(--text-tertiary); margin-bottom:0;">
+          You'll send your product photo directly via WhatsApp in the next step — we don't store
+          uploaded files on this form yet.
+        </p>
+        <button type="submit" class="btn btn-primary" style="justify-content:center; border:none; cursor:pointer;">
+          Continue to WhatsApp
+        </button>
+      </form>
+    </div>
+  </section>
+</Layout>
+
+<script define:vars={{ waLink: site.whatsapp.link }}>
+  const form = document.getElementById('sample-form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const lines = [
+      "Hi VISUAILS, I'd like to claim my €0.99 test sample.",
+      `Name: ${data.get('name')}`,
+      `Business: ${data.get('business')}`,
+      `Email: ${data.get('email')}`,
+      `Preferred style: ${data.get('style')}`,
+    ];
+    const notes = data.get('notes');
+    if (notes) lines.push(`Notes: ${notes}`);
+    const message = encodeURIComponent(lines.join('\n'));
+    window.open(`${waLink}?text=${message}`, '_blank', 'noopener');
+  });
+</script>

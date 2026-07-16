@@ -1,0 +1,133 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SEO from '../../components/SEO.astro';
+import BreadcrumbSchema from '../../components/schema/BreadcrumbSchema.astro';
+import { site } from '../../data/site.js';
+
+const title = 'Try a €0.99 Test Sample | VISUAILS';
+const description =
+  'See your own product turned into a professional ecommerce visual for €0.99 before placing a full order. One sample per business.';
+const path = '/test-sample/';
+const breadcrumbs = [
+  { name: 'Home', url: site.url + '/' },
+  { name: 'Test Sample', url: site.url + path },
+];
+
+const steps = [
+  { title: 'Upload your product photo', description: 'One clear photo of your product is all we need.' },
+  { title: 'Choose a visual style', description: 'Pick the style you want your sample created in.' },
+  { title: 'VISUAILS creates your sample', description: 'Generated, then checked by a human before it’s sent.' },
+  { title: 'Receive it by email', description: 'A download link lands in your inbox — no account needed.' },
+];
+
+const included = [
+  '1 VISUAILS sample visual',
+  'Based on a single product you provide',
+  'Created in one predefined style',
+  'Quality-checked by a human',
+  'Delivered via email',
+];
+
+const rules = [
+  { title: 'One sample per brand or business', description: 'Duplicate requests tied to the same business or payment method may be declined.' },
+  { title: 'Use your own product only', description: 'The sample is for evaluating VISUAILS on your actual product, not a placeholder.' },
+  { title: 'For evaluation purposes', description: 'It’s a preview of quality and style — full orders unlock every style and revision round.' },
+];
+---
+
+<Layout>
+  <SEO slot="seo" title={title} description={description} path={path} />
+  <BreadcrumbSchema slot="schema" items={breadcrumbs} />
+
+  <nav class="breadcrumbs container" aria-label="Breadcrumb">
+    <a href="/">Home</a><span class="sep">/</span><span>Test Sample</span>
+  </nav>
+
+  <section class="hero container">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Try Before You Order</p>
+        <h1>Try VISUAILS <span class="accent">Before You Order</span></h1>
+        <p style="font-size:1.1rem;">
+          Upload one product photo and see it turned into a professional ecommerce visual for €0.99
+          — before you commit to a full order.
+        </p>
+        <div class="hero-actions">
+          <a href="/request-test-sample/" class="btn btn-primary">Claim Sample — €0.99</a>
+          <a href={site.whatsapp.link} target="_blank" rel="noopener" class="btn btn-whatsapp">Ask a Question</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3>What You Get</h3>
+        <ul class="style-card-features">
+          {included.map((i) => <li>{i}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Important to Know</p>
+        <h2>Before You Request a Sample</h2>
+      </div>
+      <div class="grid grid-3">
+        {rules.map((r) => (
+          <div class="card">
+            <h3>{r.title}</h3>
+            <p>{r.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">How It Works</p>
+        <h2>Four Steps to Your Sample</h2>
+      </div>
+      <div class="grid grid-4">
+        {steps.map((s, i) => (
+          <div class="card step-card">
+            <div class="step-number">{i + 1}</div>
+            <h3>{s.title}</h3>
+            <p>{s.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Input Guidelines</p>
+        <h2>What Makes a Good Source Photo</h2>
+        <p>Best results come from a clear product photo, neutral background, and good lighting.</p>
+      </div>
+      <div class="before-after">
+        <div>
+          <img src="/images/visuails-input-good.webp" alt="Good example of a product photo to upload — clear, neutral background, well lit" loading="lazy" width="400" height="500" />
+          <span class="before-after-label">Good</span>
+        </div>
+        <div>
+          <img src="/images/visuails-input-bad.webp" alt="Poor example of a product photo — cluttered background, low light" loading="lazy" width="400" height="500" />
+          <span class="before-after-label">Avoid</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <h2>Ready to See Your Product Transformed?</h2>
+        <p>€0.99, one sample per business, no subscription.</p>
+        <a href="/request-test-sample/" class="btn btn-primary">Claim Sample</a>
+      </div>
+    </div>
+  </section>
+</Layout>

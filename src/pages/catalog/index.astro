@@ -1,0 +1,45 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SEO from '../../components/SEO.astro';
+import ServiceSchema from '../../components/schema/ServiceSchema.astro';
+import BreadcrumbSchema from '../../components/schema/BreadcrumbSchema.astro';
+import FaqSchema from '../../components/schema/FaqSchema.astro';
+import ServicePageContent from '../../components/ServicePageContent.astro';
+import { getServiceBySlug } from '../../lib/content.js';
+import { site } from '../../data/site.js';
+
+const service = await getServiceBySlug('catalog');
+const path = '/catalog/';
+const pageUrl = site.url + path;
+
+const title = `${service.metaName} — From €19 | VISUAILS`;
+const description = `${service.shortDescription} From €19 per visual.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: site.url + '/' },
+  { name: service.name, url: pageUrl },
+];
+
+const galleryItems = Array.from({ length: 6 }, (_, i) => ({
+  image: `/images/visuails-catalog-gallery-${i + 1}.webp`,
+  alt: `VISUAILS Catalog Images example ${i + 1}`,
+}));
+---
+
+<Layout>
+  <SEO slot="seo" title={title} description={description} path={path} ogImage={service.heroImage} />
+  <ServiceSchema slot="schema" service={service} pageUrl={pageUrl} />
+  <BreadcrumbSchema slot="schema" items={breadcrumbs} />
+  <FaqSchema slot="schema" faqs={service.faqs} />
+
+  <nav class="breadcrumbs container" aria-label="Breadcrumb">
+    <a href="/">Home</a><span class="sep">/</span><span>{service.name}</span>
+  </nav>
+
+  <ServicePageContent
+    service={service}
+    beforeImage="/images/visuails-catalog-before.webp"
+    afterImage="/images/visuails-catalog-after.webp"
+    galleryItems={galleryItems}
+  />
+</Layout>

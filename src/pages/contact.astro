@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SEO from '../components/SEO.astro';
+import BreadcrumbSchema from '../components/schema/BreadcrumbSchema.astro';
+import { site } from '../data/site.js';
+
+const title = 'Contact VISUAILS';
+const description =
+  'Get in touch with VISUAILS to start your €0.99 test sample or discuss a catalog, lifestyle, or product video batch — by email or WhatsApp.';
+
+const breadcrumbs = [
+  { name: 'Home', url: site.url + '/' },
+  { name: 'Contact', url: site.url + '/contact/' },
+];
+---
+
+<Layout>
+  <SEO slot="seo" title={title} description={description} path="/contact/" />
+  <BreadcrumbSchema slot="schema" items={breadcrumbs} />
+
+  <nav class="breadcrumbs container" aria-label="Breadcrumb">
+    <a href="/">Home</a><span class="sep">/</span><span>Contact</span>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Let's Grow Together</p>
+        <h1>Get In Touch</h1>
+        <p>Start with a €0.99 test sample, or tell us about the batch you have in mind — we typically reply within one business day.</p>
+      </div>
+
+      <div class="grid grid-3" style="max-width:900px; margin: 0 auto;">
+        <div class="card">
+          <h3>WhatsApp</h3>
+          <p>The fastest way to reach us.</p>
+          <a href={site.whatsapp.link} target="_blank" rel="noopener" class="btn btn-whatsapp">{site.whatsapp.display}</a>
+        </div>
+        <div class="card">
+          <h3>Email</h3>
+          <p>For orders, questions, or custom requests.</p>
+          <a href={`mailto:${site.email}`} class="btn btn-secondary">{site.email}</a>
+        </div>
+        <div class="card">
+          <h3>Studio &amp; Hours</h3>
+          <p style="margin-bottom:4px;">{site.address.locality}, The Netherlands</p>
+          <p style="margin-bottom:0;">
+            {site.hours.weekdayDays} {site.hours.weekdayOpens}–{site.hours.weekdayCloses}<br />
+            {site.hours.weekendDays} {site.hours.weekendOpens}–{site.hours.weekendCloses} ({site.hours.timezone})
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center" style="margin-top:40px;">
+        <a href="/test-sample/" class="btn btn-primary">Start Your €0.99 Test Sample</a>
+      </div>
+    </div>
+  </section>
+</Layout>
