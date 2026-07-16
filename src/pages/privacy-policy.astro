@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SEO from '../components/SEO.astro';
+import { site } from '../data/site.js';
+
+const title = 'Privacy Policy';
+const description = 'How VISUAILS collects, uses, and protects your data.';
+---
+
+<Layout>
+  <SEO slot="seo" title={title} description={description} path="/privacy-policy/" noindex={true} />
+
+  <nav class="breadcrumbs container" aria-label="Breadcrumb">
+    <a href="/">Home</a><span class="sep">/</span><span>Privacy Policy</span>
+  </nav>
+
+  <section class="section">
+    <div class="container" style="max-width:760px;">
+      <h1>Privacy Policy</h1>
+      <p>
+        <strong>Placeholder — replace before launch.</strong> This page is a structural placeholder
+        so the footer link isn't broken. Replace this content with your actual privacy policy,
+        ideally drafted or reviewed by a legal professional, covering what data you collect
+        (e.g. uploaded product photos, contact details), how it's stored, how long it's retained,
+        and how customers can request deletion.
+      </p>
+      <p>Contact: <a href={`mailto:${site.email}`}>{site.email}</a></p>
+    </div>
+  </section>
+</Layout>

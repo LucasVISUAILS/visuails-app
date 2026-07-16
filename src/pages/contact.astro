@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SEO from '../components/SEO.astro';
+import BreadcrumbSchema from '../components/schema/BreadcrumbSchema.astro';
+import { site } from '../data/site.js';
+
+const title = 'Contact VISUAILS';
+const description =
+  'Get in touch with VISUAILS to start your €0.99 test sample or discuss a catalog, lifestyle, or product video batch.';
+
+const breadcrumbs = [
+  { name: 'Home', url: site.url + '/' },
+  { name: 'Contact', url: site.url + '/contact/' },
+];
+---
+
+<Layout>
+  <SEO slot="seo" title={title} description={description} path="/contact/" />
+  <BreadcrumbSchema slot="schema" items={breadcrumbs} />
+
+  <nav class="breadcrumbs container" aria-label="Breadcrumb">
+    <a href="/">Home</a><span class="sep">/</span><span>Contact</span>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h1>Get In Touch</h1>
+        <p>Start with a €0.99 test sample, or tell us about the batch you have in mind.</p>
+      </div>
+
+      <div class="grid grid-3" style="max-width:900px; margin: 0 auto;">
+        <div class="card">
+          <h3>Email</h3>
+          <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+        </div>
+        <div class="card">
+          <h3>Studio</h3>
+          <p>{site.address.locality}, The Netherlands</p>
+        </div>
+        <div class="card">
+          <h3>Hours</h3>
+          <p>{site.hours.days} {site.hours.opens}–{site.hours.closes} {site.hours.timezone}</p>
+        </div>
+      </div>
+
+      <div class="text-center" style="margin-top:40px;">
+        <a href={`mailto:${site.email}?subject=Test%20sample%20request`} class="btn btn-primary">
+          Email Us to Start Your €0.99 Sample
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

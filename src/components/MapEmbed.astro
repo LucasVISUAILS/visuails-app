@@ -1,0 +1,21 @@
+---
+// Free Google Maps embed — no API key required. Used on area pages to give a
+// visual sense of the market covered. Since VISUAILS has no physical branch
+// there, this is presented as "where our [country] clients are based" context,
+// not a business location pin.
+const { query, label } = Astro.props;
+const src = `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
+---
+
+<div class="map-embed">
+  <iframe
+    src={src}
+    width="100%"
+    height="320"
+    style="border:0;"
+    allowfullscreen={false}
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    title={`Map of ${label}`}
+  ></iframe>
+</div>
