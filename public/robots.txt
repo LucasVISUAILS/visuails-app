@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://visuails-app.pages.dev/sitemap-index.xml
