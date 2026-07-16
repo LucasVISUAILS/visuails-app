@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SEO from '../../components/SEO.astro';
+import BreadcrumbSchema from '../../components/schema/BreadcrumbSchema.astro';
+import { areas } from '../../data/areas.js';
+import { services } from '../../data/services.js';
+import { site } from '../../data/site.js';
+
+const title = 'Areas We Serve — AI Ecommerce Visuals Worldwide';
+const description =
+  'VISUAILS delivers AI catalog images, lifestyle images, and product video to ecommerce brands across the US, UK, EU, and Australia — fully digital, no shoot location required.';
+
+const breadcrumbs = [
+  { name: 'Home', url: site.url + '/' },
+  { name: 'Areas We Serve', url: site.url + '/areas/' },
+];
+---
+
+<Layout>
+  <SEO slot="seo" title={title} description={description} path="/areas/" />
+  <BreadcrumbSchema slot="schema" items={breadcrumbs} />
+
+  <nav class="breadcrumbs container" aria-label="Breadcrumb">
+    <a href="/">Home</a><span class="sep">/</span><span>Areas We Serve</span>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h1>Areas We Serve</h1>
+        <p>
+          VISUAILS is based in Enschede, the Netherlands, and delivers every catalog image,
+          lifestyle image, and campaign video fully digitally — there's no shoot to schedule
+          around a timezone or a location. Below are the markets where most of our current
+          clients are based.
+        </p>
+      </div>
+      <div class="grid grid-4">
+        {areas.map((a) => (
+          <a href={`/areas/${a.slug}/`} class="card">
+            <h3>{a.name}</h3>
+            <p>{a.marketContext}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Every Service, Every Area</h2>
+        <p>Jump straight to a specific service in a specific market.</p>
+      </div>
+      {areas.map((a) => (
+        <div style="margin-bottom:28px;">
+          <h3>{a.name}</h3>
+          <div class="pill-list">
+            {services.map((s) => (
+              <a href={`/areas/${a.slug}/${s.slug}/`} class="pill">{s.name} in {a.name}</a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>

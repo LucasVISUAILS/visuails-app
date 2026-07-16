@@ -1,0 +1,45 @@
+---
+// Single canonical Organization/ProfessionalService entity for VISUAILS.
+// Rendered on every page via Layout.astro so all pages reference the same
+// @id — this is the Google-recommended pattern for a service-area business
+// with one real location (Enschede) serving many markets, instead of
+// fabricating a separate LocalBusiness per country/city (which reads as a
+// doorway-page pattern and risks a manual spam action).
+import { site, getSameAs } from '../../data/site.js';
+import { areas } from '../../data/areas.js';
+
+const sameAs = getSameAs();
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${site.url}/#organization`,
+  name: site.name,
+  url: site.url,
+  description: site.description,
+  image: `${site.url}${site.logo}`,
+  priceRange: site.priceRange,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: site.address.locality,
+    addressCountry: site.address.country,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: [
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+    ],
+    opens: site.hours.opens,
+    closes: site.hours.closes,
+  },
+  areaServed: areas.map((a) => ({ '@type': 'Country', name: a.name })),
+  ...(site.telephone ? { telephone: site.telephone } : {}),
+  ...(sameAs.length ? { sameAs } : {}),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
