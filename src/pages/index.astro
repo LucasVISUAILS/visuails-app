@@ -1,0 +1,134 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Pricing from '../components/Pricing.astro';
+---
+
+<Layout title="VISUAILS - Transform Photos with AI">
+  <Hero />
+
+  <section id="features" class="features-section">
+    <div class="container">
+      <h2>How It Works</h2>
+      <p class="section-subtitle">Three simple steps to transform your photos</p>
+
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-number">1</div>
+          <h3>Upload Photo</h3>
+          <p>Choose any photo from your device. JPG or PNG, up to 10MB.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-number">2</div>
+          <h3>AI Transforms</h3>
+          <p>Our AI instantly creates multiple versions: Catalog, Lifestyle, and Campaign styles.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-number">3</div>
+          <h3>Download & Use</h3>
+          <p>Download high-resolution images and use them anywhere. No restrictions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Pricing />
+
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to Transform Your Photos?</h2>
+      <p>Start with our free sample or upgrade for unlimited transformations.</p>
+      <a href="/app" class="btn btn-primary btn-lg">Get Started Free</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .features-section {
+    padding: var(--spacing-3xl) var(--spacing-lg);
+    background: var(--brand-light);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+  }
+
+  .container h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .section-subtitle {
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+    font-size: var(--font-size-lg);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-2xl);
+  }
+
+  .feature {
+    background: var(--brand-white);
+    padding: var(--spacing-2xl);
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .feature-number {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
+    color: var(--brand-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    margin: 0 auto var(--spacing-lg);
+  }
+
+  .feature h3 {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .feature p {
+    color: var(--text-secondary);
+  }
+
+  .cta-section {
+    padding: var(--spacing-3xl) var(--spacing-lg);
+    text-align: center;
+    background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 212, 255, 0.1) 100%);
+  }
+
+  .cta-section h2 {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .cta-section p {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .btn-lg {
+    padding: var(--spacing-md) var(--spacing-2xl);
+    font-size: var(--font-size-lg);
+  }
+
+  @media (max-width: 768px) {
+    .features-section,
+    .cta-section {
+      padding: var(--spacing-2xl) var(--spacing-lg);
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
