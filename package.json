@@ -10,12 +10,13 @@
     "deploy": "npm run build && wrangler pages deploy dist/"
   },
   "dependencies": {
-    "astro": "^4.5.0",
-    "@astrojs/cloudflare": "^9.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "stripe": "^14.0.0"
-  },
+  "astro": "^4.5.0",
+  "@astrojs/cloudflare": "^9.0.0",
+  "@astrojs/react": "^3.0.0",
+  "react": "^18.2.0",
+  "react-dom": "^18.2.0",
+  "stripe": "^14.0.0"
+},
   "devDependencies": {
     "wrangler": "^3.30.0"
   }
