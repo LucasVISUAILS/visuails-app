@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function UploadForm({ client: true }) {
+export default function UploadForm() {
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [preview, setPreview] = useState(null);
