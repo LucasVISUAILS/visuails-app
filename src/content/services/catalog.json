@@ -1,0 +1,74 @@
+{
+  "name": "Catalog Images",
+  "metaName": "AI Catalog Images",
+  "tagline": "Consistent, ecommerce-ready product photos — without a studio shoot",
+  "shortDescription": "Turn a single product photo into a full catalog of consistent, grid-ready visuals for your storefront and marketplaces — human-reviewed, delivered in hours.",
+  "heroImage": "/images/visuails-catalog-images-hero.webp",
+  "heroImageAlt": "AI-generated ecommerce catalog product photo with consistent studio lighting and clean background",
+  "howItWorks": [
+    {
+      "title": "Upload a product photo",
+      "description": "One clear photo is enough — we take care of the rest, even from a phone shot."
+    },
+    {
+      "title": "We build your catalog visual",
+      "description": "Turned into a clean, consistent catalog image: matched lighting, angle logic, and background across every SKU."
+    },
+    {
+      "title": "Delivered in ~24 hours",
+      "description": "Ready to publish across your storefront and every marketplace you sell on."
+    }
+  ],
+  "styles": [
+    {
+      "key": "classic",
+      "name": "VISUAILS Classic Catalog",
+      "tagline": "Consistent lighting, angles and background. Every time.",
+      "description": "Our core catalog style: every product shot to the same lighting, angle logic, and clean background, so your storefront reads like one coherent shoot — even across hundreds of SKUs.",
+      "price": "19",
+      "priceUnit": "per visual",
+      "isCustom": false,
+      "features": [
+        "Consistent lighting across every SKU",
+        "Grid-ready presentation for your storefront",
+        "Scales to a full catalog, not just one photo",
+        "Delivered within ~24 hours"
+      ],
+      "image": "/images/visuails-catalog-classic.webp",
+      "imageAlt": "VISUAILS Classic Catalog style — consistent studio-lit product photo on a clean background",
+      "ctaLabel": "Get Started"
+    },
+    {
+      "key": "custom-brand",
+      "name": "Custom Brand Catalog",
+      "tagline": "A catalog style built around your brand, not a template.",
+      "description": "For brands with a distinctive look to protect, we define a visual direction together — background tone, framing, styling details — so every catalog image stays unmistakably yours. The first batch takes a little longer to lock in the direction; every batch after that moves at normal speed.",
+      "price": null,
+      "priceUnit": "custom quote",
+      "isCustom": true,
+      "features": [
+        "Visual direction defined together with your brand",
+        "Locked-in look reused across every future batch",
+        "Same human review as every VISUAILS delivery",
+        "Faster turnaround from the second batch onward"
+      ],
+      "image": "/images/visuails-catalog-custom.webp",
+      "imageAlt": "Custom brand catalog style example with a distinctive brand-specific look",
+      "ctaLabel": "Get in Touch"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What quality photo do I need to upload?",
+      "a": "A clear, well-lit phone or camera photo of your product is enough — we standardize lighting, background, and framing from there. We'll flag anything too low-resolution to work with before you're charged."
+    },
+    {
+      "q": "How many revisions are included?",
+      "a": "Every catalog image includes one round of revisions as part of the price. Additional revisions can be requested at a small added cost."
+    },
+    {
+      "q": "Can this replace my product photography entirely?",
+      "a": "For most ecommerce catalog needs, yes — Classic Catalog covers standard product shots at scale. If your brand has a very specific art direction, Custom Brand Catalog is built for that instead."
+    }
+  ]
+}

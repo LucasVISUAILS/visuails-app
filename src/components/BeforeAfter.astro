@@ -1,0 +1,30 @@
+---
+// Reusable raw-photo → finished-visual comparison block. Used on the
+// homepage and every service page under "AI Speed. Human Control." framing.
+const {
+  beforeImage,
+  beforeAlt,
+  afterImage,
+  afterAlt,
+  title = 'AI Speed. Human Control. Better Results.',
+  description = 'Simply share your product with us — we handle the rest. Every visual is generated, selected, and manually checked before it reaches you.',
+} = Astro.props;
+---
+
+<div class="grid" style="grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+  <div>
+    <p class="eyebrow">Before / After</p>
+    <h2>{title}</h2>
+    <p>{description}</p>
+  </div>
+  <div class="before-after">
+    <div>
+      <img src={beforeImage} alt={beforeAlt} loading="lazy" width="400" height="500" />
+      <span class="before-after-label">Before</span>
+    </div>
+    <div>
+      <img src={afterImage} alt={afterAlt} loading="lazy" width="400" height="500" />
+      <span class="before-after-label">After</span>
+    </div>
+  </div>
+</div>

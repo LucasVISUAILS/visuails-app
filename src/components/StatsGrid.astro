@@ -1,0 +1,19 @@
+---
+// "Why VISUAILS" stat grid — reused on the homepage and all 3 service pages.
+import { site } from '../data/site.js';
+
+const { title = 'Why Businesses Choose VISUAILS' } = Astro.props;
+---
+
+<div class="section-header">
+  <h2>{title}</h2>
+</div>
+<div class="grid grid-6">
+  {site.stats.map((s) => (
+    <div class="card stat-card">
+      <p class="stat-value">{s.value}</p>
+      <p class="stat-label">{s.label}</p>
+      {s.detail && <p class="stat-detail">{s.detail}</p>}
+    </div>
+  ))}
+</div>

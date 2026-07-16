@@ -1,0 +1,54 @@
+---
+import { getAllServices } from '../lib/content.js';
+import { site } from '../data/site.js';
+
+const services = await getAllServices();
+const year = 2026;
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <span class="logo">VISUAILS</span>
+      <p>{site.description}</p>
+      <p>
+        <a href={`mailto:${site.email}`}>{site.email}</a><br />
+        <a href={site.whatsapp.link} target="_blank" rel="noopener">WhatsApp: {site.whatsapp.display}</a>
+      </p>
+      <p style="margin-bottom:0;">Office: {site.address.locality}, The Netherlands</p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Services</h3>
+      <ul>
+        {services.map((s) => (
+          <li><a href={`/${s.slug}/`}>{s.name}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/test-sample/">Test Sample</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+        <li><a href="/terms/">Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Hours (CET/CEST)</h3>
+      <ul>
+        <li>{site.hours.weekdayDays}: {site.hours.weekdayOpens}–{site.hours.weekdayCloses}</li>
+        <li>{site.hours.weekendDays}: {site.hours.weekendOpens}–{site.hours.weekendCloses}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <span>&copy; {year} VISUAILS. All rights reserved.</span>
+    <span>KVK {site.registration.kvk} · VAT {site.registration.vat}</span>
+  </div>
+</footer>

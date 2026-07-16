@@ -1,0 +1,110 @@
+{
+  "name": "Product & Campaign Videos",
+  "metaName": "AI Product & Campaign Video",
+  "tagline": "Commercial-ready video, produced in hours — no crew, no shoot day",
+  "shortDescription": "Turn a product or lifestyle photo into short-form commercial video for ads, product pages, and social — built for the placements that actually perform.",
+  "heroImage": "/images/visuails-video-hero.webp",
+  "heroImageAlt": "Ecommerce product campaign video still showing dynamic motion for social media advertising",
+  "howItWorks": [
+    {
+      "title": "Share a product photo",
+      "description": "A product photo or screenshot is all we need to get started."
+    },
+    {
+      "title": "We build your video",
+      "description": "Motion, framing, and product accuracy are handled end-to-end, human-reviewed before delivery."
+    },
+    {
+      "title": "Delivered in ~24 hours",
+      "description": "Exported in the aspect ratio your placement needs."
+    }
+  ],
+  "styles": [
+    {
+      "key": "motion",
+      "name": "VISUAILS Motion Video",
+      "tagline": "Subtle motion, clean presentation.",
+      "description": "An 8-second product video designed to highlight your product with subtle motion and a clean, minimal presentation — built for product pages.",
+      "price": null,
+      "priceUnit": "get a quote",
+      "isCustom": false,
+      "features": [
+        "8-second clean product motion",
+        "Built for product detail pages",
+        "Vertical, square, and horizontal export",
+        "Delivered within ~24 hours"
+      ],
+      "image": "/images/visuails-video-motion.webp",
+      "imageAlt": "VISUAILS Motion Video style — subtle product motion on a clean background",
+      "ctaLabel": "Get Visuals"
+    },
+    {
+      "key": "lifestyle",
+      "name": "VISUAILS Lifestyle Video",
+      "tagline": "Your product, in a real scene, in motion.",
+      "description": "Transforms your product into short-form content for social platforms — the lifestyle feel of a campaign shoot, in video.",
+      "price": null,
+      "priceUnit": "get a quote",
+      "isCustom": false,
+      "features": [
+        "Short-form, social-native format",
+        "Consistent with your Lifestyle Images style",
+        "Vertical, square, and horizontal export",
+        "Delivered within ~24 hours"
+      ],
+      "image": "/images/visuails-video-lifestyle.webp",
+      "imageAlt": "VISUAILS Lifestyle Video style — product in a real-world styled scene in motion",
+      "ctaLabel": "Get Visuals"
+    },
+    {
+      "key": "campaign",
+      "name": "VISUAILS Campaign Video",
+      "tagline": "Built for the ad, not just the page.",
+      "description": "Prioritizes product clarity and visual consistency for paid placements — Meta, TikTok, and Google ad formats that need to perform, not just look good.",
+      "price": null,
+      "priceUnit": "get a quote",
+      "isCustom": false,
+      "features": [
+        "Built for Meta, TikTok, and Google ad placements",
+        "Product clarity prioritized for performance",
+        "Vertical, square, and horizontal export",
+        "Delivered within ~24 hours"
+      ],
+      "image": "/images/visuails-video-campaign.webp",
+      "imageAlt": "VISUAILS Campaign Video style — product video built for paid social advertising",
+      "ctaLabel": "Get Visuals"
+    },
+    {
+      "key": "custom-campaign",
+      "name": "Custom Campaign Video",
+      "tagline": "A video style built around your brand's campaign.",
+      "description": "For campaigns with a specific creative direction — pacing, music, story beats — we build the format together, then reuse it consistently across future drops.",
+      "price": null,
+      "priceUnit": "custom quote",
+      "isCustom": true,
+      "features": [
+        "Creative direction defined together with your brand",
+        "Reusable format across future campaigns",
+        "Same human review as every VISUAILS delivery",
+        "Faster turnaround from the second batch onward"
+      ],
+      "image": "/images/visuails-video-custom.webp",
+      "imageAlt": "Custom campaign video style example with brand-specific creative direction",
+      "ctaLabel": "Get in Touch"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What length are the videos?",
+      "a": "Most clips run 6–15 seconds — the length that performs best across product pages and paid social placements. Longer formats are available on request."
+    },
+    {
+      "q": "Can you use my existing photos as the source?",
+      "a": "Yes — catalog or lifestyle images, from us or your own library, can be used as the visual base for video."
+    },
+    {
+      "q": "What formats do I receive?",
+      "a": "Vertical (9:16), square (1:1), and horizontal (16:9) exports are available to match every placement."
+    }
+  ]
+}

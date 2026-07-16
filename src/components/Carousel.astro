@@ -1,0 +1,13 @@
+---
+// Horizontal scroll-snap photo carousel — no JavaScript, works everywhere,
+// stays "strak" (sleek) rather than gimmicky. items: [{image, alt}]
+const { items } = Astro.props;
+---
+
+<div class="carousel">
+  {items.map((item) => (
+    <div class="carousel-item">
+      <img src={item.image} alt={item.alt} loading="lazy" width="240" height="320" />
+    </div>
+  ))}
+</div>

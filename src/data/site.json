@@ -1,0 +1,65 @@
+{
+  "name": "VISUAILS",
+  "legalName": "VISUAILS",
+  "url": "https://visuails-app.pages.dev",
+  "description": "VISUAILS creates AI-powered catalog images, lifestyle images, and product & campaign videos for ecommerce and fashion brands — up to 90% cheaper and 10x faster than a traditional shoot, 100% human-reviewed before delivery.",
+  "email": "hello@visuails.com",
+  "whatsapp": {
+    "display": "+31 6 25436130",
+    "link": "https://wa.me/31625436130"
+  },
+  "address": {
+    "locality": "Enschede",
+    "country": "NL"
+  },
+  "hours": {
+    "weekdayDays": "Mo-Fr",
+    "weekdayOpens": "08:00",
+    "weekdayCloses": "20:00",
+    "weekendDays": "Sa-Su",
+    "weekendOpens": "09:00",
+    "weekendCloses": "20:00",
+    "timezone": "CET/CEST"
+  },
+  "registration": {
+    "kvk": "99742993",
+    "vat": "NL005407575B96"
+  },
+  "social": {
+    "facebook": "",
+    "instagram": "",
+    "linkedin": ""
+  },
+  "priceRange": "€€",
+  "logo": "/images/visuails-logo.webp",
+  "ogImage": "/images/visuails-og-share-ai-product-visuals.webp",
+  "about": "VISUAILS is a done-for-you visual service for brands that need better content without arranging shoots, models, or studios. Every visual is generated, selected, and manually checked by a human before it reaches you — so what you get looks like your brand already made it big.",
+  "stats": [
+    {
+      "value": "90%",
+      "label": "Lower visual production costs",
+      "detail": "Traditional shoots run €500–€3,000+. VISUAILS starts from €19."
+    },
+    {
+      "value": "10x",
+      "label": "Faster than a traditional shoot",
+      "detail": "Most visuals are delivered within hours."
+    },
+    {
+      "value": "77%",
+      "label": "Of shoppers rely on product images when deciding to buy"
+    },
+    {
+      "value": "56%",
+      "label": "Of shoppers look at product images before anything else"
+    },
+    {
+      "value": "0",
+      "label": "Time spent fixing AI tools yourself"
+    },
+    {
+      "value": "100%",
+      "label": "Human-reviewed before delivery"
+    }
+  ]
+}

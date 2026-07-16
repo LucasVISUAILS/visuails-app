@@ -1,0 +1,50 @@
+---
+// Homepage "Ready-to-Use Models" section: the 10 free standard models, plus
+// a distinct second CTA underneath for a custom exclusive model when the
+// standard set doesn't fit the visitor's brand.
+import { site } from '../data/site.js';
+
+const models = Array.from({ length: 10 }, (_, i) => ({
+  name: `Model ${i + 1}`,
+  image: `/images/visuails-model-${i + 1}.webp`,
+}));
+
+const waMessage = encodeURIComponent("Hi VISUAILS, I'd like a custom exclusive model for my brand.");
+const waLink = `${site.whatsapp.link}?text=${waMessage}`;
+---
+
+<div class="section-header">
+  <p class="eyebrow">Consistent, Every Time</p>
+  <h2>Up to 10 <span class="accent">Ready-to-Use</span> Models</h2>
+  <p>
+    Every VISUAILS lifestyle style comes with a set of consistent, ready-to-use models — the same
+    face and build across your entire campaign, without booking a casting call.
+  </p>
+</div>
+
+<div class="grid grid-6" style="margin-bottom:40px;">
+  {models.map((m) => (
+    <div class="model-card">
+      <img src={m.image} alt={`VISUAILS ready-to-use model — ${m.name}`} loading="lazy" width="200" height="266" />
+    </div>
+  ))}
+</div>
+
+<div class="card" style="max-width:720px; margin: 0 auto 24px; text-align:center;">
+  <h3>What you can do with the standard models</h3>
+  <p style="margin-bottom:0;">
+    Pick any of the 10 ready-to-use models for your Lifestyle Images or campaign video — mix and
+    match across a full collection, reuse the same model season after season, and keep every
+    campaign visually consistent without ever scheduling a shoot.
+  </p>
+</div>
+
+<div class="card" style="max-width:720px; margin:0 auto; text-align:center; border-color: var(--border-accent);">
+  <p class="eyebrow" style="margin-bottom:8px;">Not quite your brand?</p>
+  <h3>Get a custom exclusive model</h3>
+  <p>
+    If none of the standard 10 fit the identity you're building, we develop an exclusive model for
+    your brand alone — used only in your campaigns, consistent across every future collection.
+  </p>
+  <a href={waLink} target="_blank" rel="noopener" class="btn btn-primary">Request a Custom Model</a>
+</div>

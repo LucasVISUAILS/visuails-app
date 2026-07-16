@@ -1,0 +1,38 @@
+---
+// One purchasable "style" card on a service page (e.g. VISUAILS Classic
+// Catalog, or a Custom Brand variant). Always carries a WhatsApp CTA
+// alongside the primary action, per the brief: every service/style gets a
+// direct WhatsApp contact option.
+import { site } from '../data/site.js';
+
+const { style, serviceName } = Astro.props;
+const waMessage = encodeURIComponent(`Hi VISUAILS, I'm interested in ${style.name}.`);
+const waLink = `${site.whatsapp.link}?text=${waMessage}`;
+---
+
+<div class={`style-card ${style.isCustom ? 'is-custom' : ''}`}>
+  <div class="style-card-image">
+    <img src={style.image} alt={style.imageAlt} loading="lazy" width="400" height="300" />
+  </div>
+  <div class="style-card-body">
+    {style.isCustom && <p class="eyebrow" style="margin-bottom:0;">Custom Option</p>}
+    <h3>{style.name}</h3>
+    <p style="color:var(--text-secondary); margin-bottom:0;">{style.tagline}</p>
+    <p style="font-size:0.9rem;">{style.description}</p>
+
+    {style.price ? (
+      <p class="style-card-price">€{style.price}<span> / {style.priceUnit}</span></p>
+    ) : (
+      <p class="style-card-price" style="font-size:1.2rem;">{style.priceUnit === 'custom quote' ? 'Custom quote' : 'Get a quote'}</p>
+    )}
+
+    <ul class="style-card-features">
+      {style.features.map((f) => <li>{f}</li>)}
+    </ul>
+
+    <div class="style-card-ctas">
+      <a href="/contact/" class="btn btn-primary">{style.ctaLabel}</a>
+      <a href={waLink} target="_blank" rel="noopener" class="btn btn-whatsapp">WhatsApp</a>
+    </div>
+  </div>
+</div>

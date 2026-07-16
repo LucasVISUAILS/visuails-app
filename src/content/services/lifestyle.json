@@ -1,0 +1,128 @@
+{
+  "name": "Lifestyle Images",
+  "metaName": "AI Lifestyle Images",
+  "tagline": "Full styled campaigns with a consistent model — no photoshoot needed",
+  "shortDescription": "Show your product in real-world, styled scenes with a consistent model across every image — the campaign content a full production day used to cost you.",
+  "heroImage": "/images/visuails-lifestyle-images-hero.webp",
+  "heroImageAlt": "AI-generated lifestyle campaign photo showing a consistent model wearing a product in a styled real-world scene",
+  "howItWorks": [
+    {
+      "title": "Upload a product photo",
+      "description": "Choose your preferred VISUAILS lifestyle style to match the mood you're after."
+    },
+    {
+      "title": "Your product, placed in scene",
+      "description": "Natural lighting, composition, and product focus are kept consistent across every image in the set."
+    },
+    {
+      "title": "Delivered in ~24 hours",
+      "description": "Ready for your storefront and social channels."
+    }
+  ],
+  "styles": [
+    {
+      "key": "phone-made",
+      "name": "VISUAILS Phone-made Lifestyle",
+      "tagline": "Minimal, authentic — like it was shot on a phone.",
+      "description": "Lifestyle visuals designed to resemble real, effortless phone photography. The scenes feel natural, unposed, and native to social feeds.",
+      "price": "35",
+      "priceUnit": "per visual",
+      "isCustom": false,
+      "features": [
+        "High-resolution export",
+        "Natural product integration",
+        "Consistent model across a full set",
+        "Delivered within ~24 hours"
+      ],
+      "image": "/images/visuails-lifestyle-phone-made.webp",
+      "imageAlt": "VISUAILS Phone-made Lifestyle style — natural, authentic phone-photography look",
+      "ctaLabel": "Get Started"
+    },
+    {
+      "key": "glow",
+      "name": "VISUAILS Glow Lifestyle",
+      "tagline": "Bold, editorial, campaign-ready.",
+      "description": "Fashion-editorial inspired visuals with direct on-camera flash — sharp contrast, strong shadow, and a modern campaign aesthetic.",
+      "price": "35",
+      "priceUnit": "per visual",
+      "isCustom": false,
+      "features": [
+        "High-resolution export",
+        "Editorial flash lighting",
+        "Consistent model across a full set",
+        "Delivered within ~24 hours"
+      ],
+      "image": "/images/visuails-lifestyle-glow.webp",
+      "imageAlt": "VISUAILS Glow Lifestyle style — bold editorial flash photography look",
+      "ctaLabel": "Get Started"
+    },
+    {
+      "key": "flash",
+      "name": "VISUAILS Flash Lifestyle",
+      "tagline": "Direct, minimal, unmistakably current.",
+      "description": "A flash-lit, minimal aesthetic — natural scenes with just enough edge to feel current rather than staged.",
+      "price": "35",
+      "priceUnit": "per visual",
+      "isCustom": false,
+      "features": [
+        "High-resolution export",
+        "Natural product integration",
+        "Consistent model across a full set",
+        "Delivered within ~24 hours"
+      ],
+      "image": "/images/visuails-lifestyle-flash.webp",
+      "imageAlt": "VISUAILS Flash Lifestyle style — direct flash-lit lifestyle photography look",
+      "ctaLabel": "Get Started"
+    },
+    {
+      "key": "dunes",
+      "name": "VISUAILS DUNES Lifestyle",
+      "tagline": "Warm, sun-drenched, elevated.",
+      "description": "A warmer, more atmospheric lifestyle style — sun-drenched tones and elevated styling for brands that want their campaign to feel like a destination.",
+      "price": "35",
+      "priceUnit": "per visual",
+      "isCustom": false,
+      "features": [
+        "High-resolution export",
+        "Warm, atmospheric tone",
+        "Consistent model across a full set",
+        "Delivered within ~24 hours"
+      ],
+      "image": "/images/visuails-lifestyle-dunes.webp",
+      "imageAlt": "VISUAILS DUNES Lifestyle style — warm, sun-drenched atmospheric photography look",
+      "ctaLabel": "Get Started"
+    },
+    {
+      "key": "custom-brand",
+      "name": "Custom Brand Lifestyle",
+      "tagline": "A fully custom style, developed for your brand alone.",
+      "description": "When none of the standard styles are quite right, we develop a visual direction together with your brand — model, mood, and scene — so every future campaign stays consistent and recognizably yours. The first batch takes a little longer to lock in the direction; every batch after that moves at normal speed.",
+      "price": null,
+      "priceUnit": "custom quote",
+      "isCustom": true,
+      "features": [
+        "Visual direction defined together with your brand",
+        "Locked-in model and mood reused every campaign",
+        "Same human review as every VISUAILS delivery",
+        "Faster turnaround from the second batch onward"
+      ],
+      "image": "/images/visuails-lifestyle-custom.webp",
+      "imageAlt": "Custom brand lifestyle style example with a distinctive brand-specific model and mood",
+      "ctaLabel": "Get in Touch"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I reuse the same model across multiple collections?",
+      "a": "Yes — once a model is set for your brand, it can be reused across future lifestyle batches so your visual identity stays consistent season to season."
+    },
+    {
+      "q": "Do you offer different body types and looks for the model?",
+      "a": "Yes, model characteristics are part of your brief so the imagery reflects your actual customer base."
+    },
+    {
+      "q": "Is this the same as stock photography?",
+      "a": "No — every image is generated specifically for your product and brand direction, not pulled from a stock library."
+    }
+  ]
+}

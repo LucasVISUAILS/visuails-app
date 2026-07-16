@@ -1,0 +1,43 @@
+---
+import { getAllServices } from '../lib/content.js';
+import { site } from '../data/site.js';
+
+const services = await getAllServices();
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">VISUAILS</a>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul>
+        <li class="has-dropdown">
+          <a href="/#services">Services</a>
+          <ul class="dropdown">
+            {services.map((s) => (
+              <li><a href={`/${s.slug}/`}>{s.name}</a></li>
+            ))}
+          </ul>
+        </li>
+        <li><a href="/test-sample/">Test Sample</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </nav>
+
+    <a href={site.whatsapp.link} target="_blank" rel="noopener" class="btn btn-primary header-cta">Get in Touch</a>
+
+    <details class="mobile-menu">
+      <summary aria-label="Open menu">☰</summary>
+      <ul>
+        <li><a href="/#services">Services</a></li>
+        {services.map((s) => (
+          <li class="indent"><a href={`/${s.slug}/`}>{s.name}</a></li>
+        ))}
+        <li><a href="/test-sample/">Test Sample</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </details>
+  </div>
+</header>

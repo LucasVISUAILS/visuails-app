@@ -1,0 +1,39 @@
+---
+// Service schema for one of the 3 core service pages. VISUAILS ships
+// digitally worldwide with no fixed service area, so areaServed stays
+// broad rather than naming specific countries (see OrganizationSchema.astro
+// for why we don't fabricate per-market entities either).
+import { site } from '../../data/site.js';
+
+const { service, pageUrl } = Astro.props;
+
+const pricedStyles = service.styles.filter((s) => s.price);
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: service.metaName,
+  serviceType: service.name,
+  description: service.shortDescription,
+  provider: { '@id': `${site.url}/#organization` },
+  areaServed: { '@type': 'Place', name: 'Worldwide (digital delivery)' },
+  url: pageUrl,
+  ...(pricedStyles.length
+    ? {
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: `${service.name} pricing`,
+          itemListElement: pricedStyles.map((s) => ({
+            '@type': 'Offer',
+            name: s.name,
+            priceCurrency: 'EUR',
+            price: s.price,
+            url: pageUrl,
+          })),
+        },
+      }
+    : {}),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
