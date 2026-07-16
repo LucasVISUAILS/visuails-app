@@ -1,0 +1,10 @@
+{
+  "name": "United Kingdom",
+  "shortName": "UK",
+  "mapQuery": "London, United Kingdom",
+  "region": "Europe",
+  "marketContext": "The UK has one of Europe's most mature direct-to-consumer fashion and beauty markets, with brands based in London and Manchester making up a large share of our UK client work.",
+  "whyRemoteWorks": "Only a one-hour timezone difference from our Enschede base means live briefing calls and same-day revisions fit naturally into a UK working day.",
+  "localFact": "Post-Brexit customs changes affect physical goods, not digital delivery — catalog, lifestyle, and video files cross the border instantly with no import paperwork.",
+  "industries": ["Fashion & apparel", "Beauty", "Homeware & lifestyle"]
+}

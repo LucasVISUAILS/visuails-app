@@ -1,0 +1,163 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import SEO from '../../../components/SEO.astro';
+import ServiceSchema from '../../../components/schema/ServiceSchema.astro';
+import BreadcrumbSchema from '../../../components/schema/BreadcrumbSchema.astro';
+import FaqSchema from '../../../components/schema/FaqSchema.astro';
+import MapEmbed from '../../../components/MapEmbed.astro';
+import { getAllAreas, getAllServices } from '../../../lib/content.js';
+import { site } from '../../../data/site.js';
+
+export async function getStaticPaths() {
+  const areas = await getAllAreas();
+  const services = await getAllServices();
+  const paths = [];
+  for (const area of areas) {
+    for (const service of services) {
+      paths.push({
+        params: { area: area.slug, service: service.slug },
+        props: { area, service },
+      });
+    }
+  }
+  return paths;
+}
+
+const { area, service } = Astro.props;
+const path = `/areas/${area.slug}/${service.slug}/`;
+const pageUrl = site.url + path;
+const services = await getAllServices();
+
+const title = `${service.metaName} in ${area.name} — From €${service.startingPrice} | VISUAILS`;
+const description = `${service.name} for ${area.name}-based ecommerce brands: ${service.shortDescription} Human-reviewed, delivered digitally, from €${service.startingPrice} per visual.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: site.url + '/' },
+  { name: 'Areas We Serve', url: site.url + '/areas/' },
+  { name: area.name, url: site.url + `/areas/${area.slug}/` },
+  { name: service.name, url: pageUrl },
+];
+
+// A local-flavored FAQ entry alongside the two most relevant service FAQs —
+// keeps content genuinely area-specific rather than a copy-pasted FAQ block.
+const localFaq = {
+  q: `Do you work with ${area.industries[0].toLowerCase()} brands in ${area.name}?`,
+  a: `Yes — ${area.industries.join(', ')} are among the industries we work with most in ${area.name}. ${area.localFact}`,
+};
+const combinedFaqs = [...service.faqs.slice(0, 2), localFaq];
+
+const otherServices = services.filter((s) => s.slug !== service.slug);
+---
+
+<Layout>
+  <SEO slot="seo" title={title} description={description} path={path} ogImage={service.heroImage} />
+  <ServiceSchema slot="schema" service={service} area={area} pageUrl={pageUrl} />
+  <BreadcrumbSchema slot="schema" items={breadcrumbs} />
+  <FaqSchema slot="schema" faqs={combinedFaqs} />
+
+  <nav class="breadcrumbs container" aria-label="Breadcrumb">
+    <a href="/">Home</a><span class="sep">/</span>
+    <a href="/areas/">Areas We Serve</a><span class="sep">/</span>
+    <a href={`/areas/${area.slug}/`}>{area.name}</a><span class="sep">/</span>
+    <span>{service.name}</span>
+  </nav>
+
+  <section class="hero container">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">{service.name} · {area.name}</p>
+        <h1>{service.metaName} in {area.name}</h1>
+        <p style="font-size:1.1rem;">{service.tagline}, built for ecommerce brands based in {area.name}.</p>
+        <p>{area.marketContext}</p>
+        <div class="hero-actions">
+          <a href="/contact/" class="btn btn-primary">Start Free Sample — €0.99</a>
+          <span class="pill">From €{service.startingPrice} {service.priceUnit}</span>
+        </div>
+      </div>
+      <div class="hero-image-wrap">
+        <img src={service.heroImage} alt={`${service.heroImageAlt}, produced for a ${area.name}-based ecommerce brand`} width="720" height="720" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why {area.name} Brands Use VISUAILS for {service.name}</h2>
+      </div>
+      <div class="grid grid-4">
+        {service.keyBenefits.map((b) => (
+          <div class="card">
+            <h3>{b.title}</h3>
+            <p>{b.description}</p>
+          </div>
+        ))}
+      </div>
+      <p style="max-width:760px; margin:32px auto 0; text-align:center;">
+        <strong>Working across the timezone gap:</strong> {area.whyRemoteWorks}
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="hero-grid" style="align-items:flex-start;">
+        <div>
+          <h2>{area.name} Market Context</h2>
+          <p>{area.localFact}</p>
+          <h3>Industries We Work With</h3>
+          <div class="pill-list">
+            {area.industries.map((i) => <span class="pill">{i}</span>)}
+          </div>
+        </div>
+        <MapEmbed query={area.mapQuery} label={area.name} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+      </div>
+      <div style="max-width:760px; margin:0 auto;">
+        {combinedFaqs.map((f) => (
+          <details class="faq-item">
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>More for {area.name} Brands</h2>
+      </div>
+      <div class="grid grid-3">
+        {otherServices.map((s) => (
+          <a href={`/areas/${area.slug}/${s.slug}/`} class="card">
+            <h3>{s.name} in {area.name}</h3>
+            <p>{s.tagline}</p>
+          </a>
+        ))}
+        <a href={`/areas/${area.slug}/`} class="card">
+          <h3>All {area.name} Services</h3>
+          <p>See every VISUAILS service available for {area.name}-based brands.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="cta-band">
+        <h2>Try {service.name} for €0.99</h2>
+        <p>See the quality on your own product before committing to a full batch.</p>
+        <a href="/contact/" class="btn btn-primary">Start Free Sample</a>
+      </div>
+    </div>
+  </section>
+</Layout>

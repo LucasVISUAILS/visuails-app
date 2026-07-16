@@ -1,0 +1,50 @@
+{
+  "name": "Catalog Images",
+  "metaName": "AI Catalog Images",
+  "tagline": "Consistent, ecommerce-ready product photos without a studio shoot",
+  "shortDescription": "Turn raw product shots into clean, consistent catalog visuals for your product listings — every angle, every SKU, matched in lighting and background.",
+  "icon": "catalog",
+  "startingPrice": "19",
+  "priceUnit": "per visual",
+  "heroImage": "/images/visuails-catalog-images-ecommerce-product-photography-hero.webp",
+  "heroImageAlt": "AI-generated ecommerce catalog product photo with consistent studio lighting and clean background",
+  "keyBenefits": [
+    {
+      "title": "Studio-consistent results",
+      "description": "Every SKU gets the same lighting, angle logic, and background treatment, so your storefront looks like one coherent shoot — even across hundreds of products."
+    },
+    {
+      "title": "No photographer, no studio",
+      "description": "Upload your raw product photos (even phone shots) and get back marketplace-ready catalog images without booking a single production day."
+    },
+    {
+      "title": "Marketplace-ready formats",
+      "description": "Delivered pre-sized and background-cleaned for Shopify, Amazon, Bol.com, Zalando and other major marketplaces."
+    },
+    {
+      "title": "Human-reviewed before delivery",
+      "description": "Every image passes a human quality check before it reaches you — no AI artifacts, no mismatched proportions."
+    }
+  ],
+  "useCases": [
+    "Fashion & apparel flat-lays and ghost mannequin shots",
+    "Furniture and homeware product listings",
+    "Electronics and gadget catalog photography",
+    "Food & beverage packaging shots"
+  ],
+  "faqs": [
+    {
+      "q": "What quality photos do I need to upload?",
+      "a": "A clear, well-lit phone or camera photo of your product is enough — our process standardizes lighting, background, and framing from there. We'll flag anything too low-resolution to work with before you're charged."
+    },
+    {
+      "q": "How many revisions are included?",
+      "a": "Every catalog image includes one round of revisions as part of the price. Additional revisions can be requested at a small added cost."
+    },
+    {
+      "q": "How fast will I get my catalog images?",
+      "a": "Most catalog batches are delivered within hours, not days — typically same-day for orders placed before 3pm CET."
+    }
+  ],
+  "relatedServiceSlugs": ["lifestyle-images", "product-campaign-videos"]
+}

@@ -1,0 +1,114 @@
+backend:
+  name: github
+  repo: LucasVISUAILS/visuails-app
+  branch: main
+  auth_type: pkce # client-side OAuth — no backend server or secret needed
+  app_id: REPLACE_WITH_YOUR_GITHUB_OAUTH_CLIENT_ID # see ADMIN_CMS_SETUP.md — one-time 5 minute setup
+
+# Where uploaded images from the CMS land, and the URL prefix used to
+# reference them in pages (matches the existing public/images/ convention).
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "services"
+    label: "Services"
+    folder: "src/content/services"
+    extension: "json"
+    format: "json"
+    create: false # exactly 3 files, one per service page — adding/removing
+    delete: false # here would silently break routes and internal links
+    identifier_field: "name"
+    summary: "{{name}} — from €{{startingPrice}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Meta Name (used in <title> tags)", name: "metaName", widget: "string" }
+      - { label: "Tagline", name: "tagline", widget: "string" }
+      - { label: "Short Description", name: "shortDescription", widget: "text" }
+      - { label: "Icon key (leave as-is)", name: "icon", widget: "hidden" }
+      - { label: "Starting Price (EUR, number only)", name: "startingPrice", widget: "string" }
+      - { label: "Price Unit", name: "priceUnit", widget: "string" }
+      - { label: "Hero Image", name: "heroImage", widget: "image" }
+      - { label: "Hero Image Alt Text", name: "heroImageAlt", widget: "string" }
+      - label: "Key Benefits"
+        name: "keyBenefits"
+        widget: "list"
+        summary: "{{fields.title}}"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+      - label: "Use Cases"
+        name: "useCases"
+        widget: "list"
+        field: { label: "Use case", name: "item", widget: "string" }
+      - label: "FAQs"
+        name: "faqs"
+        widget: "list"
+        summary: "{{fields.q}}"
+        fields:
+          - { label: "Question", name: "q", widget: "string" }
+          - { label: "Answer", name: "a", widget: "text" }
+      - label: "Related Service Slugs (must match another service's filename, e.g. catalog-images)"
+        name: "relatedServiceSlugs"
+        widget: "list"
+        field: { label: "Slug", name: "item", widget: "string" }
+
+  - name: "areas"
+    label: "Areas We Serve"
+    folder: "src/content/areas"
+    extension: "json"
+    format: "json"
+    create: false # exactly 8 files, one per country page — see note above
+    delete: false
+    identifier_field: "name"
+    summary: "{{name}} ({{shortName}})"
+    fields:
+      - { label: "Country Name", name: "name", widget: "string" }
+      - { label: "Short Name (e.g. US, UK, DE)", name: "shortName", widget: "string" }
+      - { label: "Map Search Query (e.g. \"Berlin, Germany\")", name: "mapQuery", widget: "string" }
+      - { label: "Region", name: "region", widget: "string" }
+      - { label: "Market Context", name: "marketContext", widget: "text" }
+      - { label: "Why Remote Works", name: "whyRemoteWorks", widget: "text" }
+      - { label: "Local Fact", name: "localFact", widget: "text" }
+      - label: "Industries"
+        name: "industries"
+        widget: "list"
+        field: { label: "Industry", name: "item", widget: "string" }
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "general"
+        label: "General Settings"
+        file: "src/data/site.json"
+        fields:
+          - { label: "Business Name", name: "name", widget: "string" }
+          - { label: "Legal Name", name: "legalName", widget: "string" }
+          - { label: "Site URL (no trailing slash)", name: "url", widget: "string" }
+          - { label: "Description (used in meta tags & schema)", name: "description", widget: "text" }
+          - { label: "Contact Email", name: "email", widget: "string" }
+          - { label: "Phone (optional)", name: "telephone", widget: "string", required: false }
+          - label: "Address"
+            name: "address"
+            widget: "object"
+            fields:
+              - { label: "City", name: "locality", widget: "string" }
+              - { label: "Country Code (e.g. NL)", name: "country", widget: "string" }
+          - label: "Business Hours"
+            name: "hours"
+            widget: "object"
+            fields:
+              - { label: "Days (e.g. Mo-Fr)", name: "days", widget: "string" }
+              - { label: "Opens (24h, e.g. 08:00)", name: "opens", widget: "string" }
+              - { label: "Closes (24h, e.g. 20:00)", name: "closes", widget: "string" }
+              - { label: "Timezone label", name: "timezone", widget: "string" }
+          - label: "Social Links (leave blank if none)"
+            name: "social"
+            widget: "object"
+            fields:
+              - { label: "Facebook URL", name: "facebook", widget: "string", required: false }
+              - { label: "Instagram URL", name: "instagram", widget: "string", required: false }
+              - { label: "LinkedIn URL", name: "linkedin", widget: "string", required: false }
+          - { label: "Price Range (e.g. €€)", name: "priceRange", widget: "string" }
+          - { label: "Logo Image", name: "logo", widget: "image" }
+          - { label: "Default Social Share Image", name: "ogImage", widget: "image" }

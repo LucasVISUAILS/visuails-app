@@ -1,0 +1,10 @@
+{
+  "name": "Spain",
+  "shortName": "ES",
+  "mapQuery": "Madrid, Spain",
+  "region": "Europe",
+  "marketContext": "Spain's ecommerce growth has been driven heavily by fashion and lifestyle DTC brands out of Madrid and Barcelona, selling through Shopify and El Corte Inglés' online marketplace.",
+  "whyRemoteWorks": "Same CET/CEST timezone as our Enschede studio, so briefings and delivery happen within a single working day.",
+  "localFact": "Barcelona and Madrid-based fashion brands are among our most frequent Lifestyle Images clients, using a consistent AI model to launch full seasonal collections without a studio day.",
+  "industries": ["Fashion & apparel", "Beauty", "Food & beverage"]
+}

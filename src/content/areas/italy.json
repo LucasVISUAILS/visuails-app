@@ -1,0 +1,10 @@
+{
+  "name": "Italy",
+  "shortName": "IT",
+  "mapQuery": "Milan, Italy",
+  "region": "Europe",
+  "marketContext": "Italy's ecommerce brands, especially those out of Milan, sell into a market with high expectations for fashion and design presentation quality.",
+  "whyRemoteWorks": "Same CET/CEST timezone as our home studio — no scheduling delay between briefing and delivery.",
+  "localFact": "Italian fashion and design brands frequently combine Catalog Images with Product & Campaign Videos to launch a collection across product pages and paid social at the same time.",
+  "industries": ["Fashion & luxury-adjacent", "Furniture & design", "Food & beverage"]
+}
