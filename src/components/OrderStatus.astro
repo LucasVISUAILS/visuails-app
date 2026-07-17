@@ -1,0 +1,318 @@
+---
+// Real-time Order Status Component
+interface Step {
+  id: string;
+  label: string;
+  description: string;
+  status: 'completed' | 'in-progress' | 'pending';
+  timestamp?: string;
+}
+
+interface Props {
+  orderId: string;
+  orderDate: string;
+  totalPrice: number;
+  currency?: string;
+  steps: Step[];
+  estimatedDelivery?: string;
+  className?: string;
+}
+
+const {
+  orderId,
+  orderDate,
+  totalPrice,
+  currency = '€',
+  steps,
+  estimatedDelivery,
+  className = '',
+} = Astro.props;
+
+const statusIcons = {
+  completed: '✓',
+  'in-progress': '⟳',
+  pending: '○',
+};
+
+const statusColors = {
+  completed: '#00aa44',
+  'in-progress': '#0052cc',
+  pending: '#a0aec0',
+};
+---
+
+<div class={`order-status ${className}`}>
+  <!-- Header -->
+  <div class="status-header">
+    <div class="order-info">
+      <h3 class="order-id">Order {orderId}</h3>
+      <p class="order-meta">
+        Placed on {new Date(orderDate).toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+        })} • {currency}{totalPrice.toFixed(2)}
+      </p>
+    </div>
+    {estimatedDelivery && (
+      <div class="estimated-delivery">
+        <span class="label">Estimated Delivery</span>
+        <span class="date">
+          {new Date(estimatedDelivery).toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+          })}
+        </span>
+      </div>
+    )}
+  </div>
+
+  <!-- Timeline -->
+  <div class="timeline">
+    {steps.map((step, index) => (
+      <div class={`timeline-step status-${step.status}`} key={step.id}>
+        <!-- Step indicator -->
+        <div class="step-indicator">
+          <div class="step-icon" style={`--status-color: ${statusColors[step.status]}`}>
+            {statusIcons[step.status]}
+          </div>
+          {index < steps.length - 1 && <div class="step-connector"></div>}
+        </div>
+
+        <!-- Step content -->
+        <div class="step-content">
+          <div class="step-header">
+            <h4 class="step-label">{step.label}</h4>
+            {step.timestamp && <span class="step-time">{step.timestamp}</span>}
+          </div>
+          <p class="step-description">{step.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Progress bar -->
+  {
+    steps.length > 0 && (
+      <div class="progress-bar-container">
+        <div class="progress-bar" style={`--progress: ${
+          ((steps.filter(s => s.status === 'completed').length) / steps.length) * 100
+        }%`}></div>
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .order-status {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .status-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .order-info {
+    flex: 1;
+  }
+
+  .order-id {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a202c;
+  }
+
+  .order-meta {
+    margin: 4px 0 0 0;
+    font-size: 13px;
+    color: #718096;
+  }
+
+  .estimated-delivery {
+    text-align: right;
+  }
+
+  .estimated-delivery .label {
+    display: block;
+    font-size: 12px;
+    color: #a0aec0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .estimated-delivery .date {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0052cc;
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  .timeline-step {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .timeline-step:last-child {
+    margin-bottom: 0;
+  }
+
+  .step-indicator {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 44px;
+  }
+
+  .step-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 20px;
+    color: white;
+    background-color: var(--status-color, #a0aec0);
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+  }
+
+  .timeline-step.status-completed .step-icon {
+    box-shadow: 0 0 0 4px rgba(0, 170, 68, 0.1);
+  }
+
+  .timeline-step.status-in-progress .step-icon {
+    box-shadow: 0 0 0 4px rgba(0, 82, 204, 0.1);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 4px rgba(0, 82, 204, 0.1);
+    }
+    50% {
+      box-shadow: 0 0 0 8px rgba(0, 82, 204, 0.05);
+    }
+  }
+
+  .step-connector {
+    width: 2px;
+    flex: 1;
+    background: #e2e8f0;
+    margin-top: 8px;
+    min-height: 32px;
+  }
+
+  .timeline-step.status-completed .step-connector {
+    background: #00aa44;
+  }
+
+  .timeline-step.status-in-progress .step-connector {
+    background: #0052cc;
+  }
+
+  .step-content {
+    flex: 1;
+    padding-top: 4px;
+  }
+
+  .step-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+  }
+
+  .step-label {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a202c;
+  }
+
+  .step-time {
+    font-size: 12px;
+    color: #718096;
+  }
+
+  .step-description {
+    margin: 0;
+    font-size: 13px;
+    color: #718096;
+    line-height: 1.5;
+  }
+
+  /* Progress bar */
+  .progress-bar-container {
+    height: 4px;
+    background: #e2e8f0;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #0052cc, #00aa44);
+    width: var(--progress, 0%);
+    transition: width 0.6s ease;
+    border-radius: 2px;
+  }
+
+  @media (max-width: 640px) {
+    .order-status {
+      padding: 16px;
+    }
+
+    .status-header {
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .estimated-delivery {
+      text-align: left;
+    }
+
+    .timeline-step {
+      gap: 12px;
+    }
+
+    .step-indicator {
+      min-width: 40px;
+    }
+
+    .step-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+    }
+
+    .step-label {
+      font-size: 13px;
+    }
+
+    .step-description {
+      font-size: 12px;
+    }
+  }
+</style>

@@ -1,0 +1,249 @@
+---
+// Problem/Solution Section
+---
+
+<section class="problem-solution">
+  <div class="container">
+    <div class="grid">
+      <!-- Problem Column -->
+      <div class="problem-column">
+        <div class="column-header">
+          <h3 class="column-title">The Problem</h3>
+          <span class="column-emoji">⚠️</span>
+        </div>
+
+        <ul class="issue-list">
+          <li class="issue">
+            <span class="icon">✗</span>
+            <div>
+              <strong>Studio shoots cost 5k+</strong>
+              <p>Traditional photography is expensive, time-consuming, and you wait weeks.</p>
+            </div>
+          </li>
+
+          <li class="issue">
+            <span class="icon">✗</span>
+            <div>
+              <strong>Inconsistent brand aesthetic</strong>
+              <p>Different photographers, different styles—your brand looks scattered.</p>
+            </div>
+          </li>
+
+          <li class="issue">
+            <span class="icon">✗</span>
+            <div>
+              <strong>Limited angle variations</strong>
+              <p>Can't easily test new markets or product angles without another expensive shoot.</p>
+            </div>
+          </li>
+
+          <li class="issue">
+            <span class="icon">✗</span>
+            <div>
+              <strong>Manual editing & revisions</strong>
+              <p>Endless back-and-forths. Revisions cost extra money and burn time.</p>
+            </div>
+          </li>
+
+          <li class="issue">
+            <span class="icon">✗</span>
+            <div>
+              <strong>Can't scale fast</strong>
+              <p>Seasonal updates, new products, new markets—it all takes months to execute.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Solution Column -->
+      <div class="solution-column">
+        <div class="column-header">
+          <h3 class="column-title">Our Solution</h3>
+          <span class="column-emoji">✨</span>
+        </div>
+
+        <ul class="solution-list">
+          <li class="solution">
+            <span class="icon">✓</span>
+            <div>
+              <strong>€19-35 per image</strong>
+              <p>10x cheaper than traditional shoots. Scales with your growth.</p>
+            </div>
+          </li>
+
+          <li class="solution">
+            <span class="icon">✓</span>
+            <div>
+              <strong>On-brand consistency</strong>
+              <p>AI learns your aesthetic. Every visual matches your brand perfectly.</p>
+            </div>
+          </li>
+
+          <li class="solution">
+            <span class="icon">✓</span>
+            <div>
+              <strong>Unlimited angle variations</strong>
+              <p>Test new angles, new markets, new seasons—generate as many variations as you need.</p>
+            </div>
+          </li>
+
+          <li class="solution">
+            <span class="icon">✓</span>
+            <div>
+              <strong>3 revision rounds included</strong>
+              <p>No surprises. Revisions are built-in, not an extra fee.</p>
+            </div>
+          </li>
+
+          <li class="solution">
+            <span class="icon">✓</span>
+            <div>
+              <strong>Scale instantly</strong>
+              <p>Need 500 images for a new product line? Done in 5 days instead of 5 months.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .problem-solution {
+    padding: 80px 0;
+    background: #F8F9FA;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+
+  .problem-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .solution-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .column-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .column-title {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .column-emoji {
+    font-size: 28px;
+  }
+
+  .issue-list,
+  .solution-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .issue,
+  .solution {
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    background: #FFFFFF;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+    transition: all 0.2s ease;
+  }
+
+  .issue:hover,
+  .solution:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+  }
+
+  .issue .icon {
+    color: #FF6B35;
+    font-weight: 700;
+    font-size: 18px;
+    flex-shrink: 0;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .solution .icon {
+    color: var(--accent-success);
+    font-weight: 700;
+    font-size: 18px;
+    flex-shrink: 0;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .issue div,
+  .solution div {
+    flex: 1;
+  }
+
+  .issue strong,
+  .solution strong {
+    display: block;
+    color: var(--text-primary);
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .issue p,
+  .solution p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 1024px) {
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .problem-solution {
+      padding: 60px 0;
+    }
+
+    .grid {
+      gap: 32px;
+    }
+
+    .column-title {
+      font-size: 1.4rem;
+    }
+
+    .issue,
+    .solution {
+      gap: 10px;
+      padding: 12px;
+    }
+  }
+</style>

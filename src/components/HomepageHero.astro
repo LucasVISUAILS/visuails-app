@@ -1,0 +1,239 @@
+---
+// Homepage Hero Section - v5 Light Mode
+import BeforeAfterSlider from './BeforeAfterSlider.astro';
+
+const site = {
+  whatsapp: {
+    link: 'https://wa.me/31123456789?text=Hi%20VISUAILS%2C%20I%27m%20interested%20in%20your%20services'
+  }
+};
+---
+
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-grid">
+      <!-- Left: Text content -->
+      <div class="hero-content">
+        <span class="eyebrow">AI Product Visuals That Sell</span>
+
+        <h1 class="hero-title">
+          Stunning Product Visuals in <span class="accent">48 Hours</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Your products deserve better than generic studio shots. VISUAILS generates studio-quality, on-brand visuals that convert—faster and 10x cheaper than traditional shoots.
+        </p>
+
+        <div class="hero-trust-signals">
+          <span class="trust-item">✓ 500+ brands worldwide</span>
+          <span class="trust-item">✓ 24-48h delivery</span>
+          <span class="trust-item">✓ 95% client retention</span>
+        </div>
+
+        <div class="hero-ctas">
+          <a href="/test-sample/" class="btn btn-primary">
+            ⚡ Order Now
+          </a>
+          <a href="/test-sample/" class="btn btn-secondary">
+            🎁 Free Test Sample
+          </a>
+          <a href={site.whatsapp.link} target="_blank" rel="noopener" class="btn btn-tertiary">
+            📱 WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Before/After Slider -->
+      <div class="hero-visual">
+        <BeforeAfterSlider
+          beforeImage="/images/visuails-hero-before.webp"
+          afterImage="/images/visuails-hero-after.webp"
+          beforeAlt="Raw product photo before VISUAILS"
+          afterAlt="Finished visual after VISUAILS transformation"
+          height="500px"
+          autoPlay={false}
+        />
+        <p class="visual-caption">Drag to compare. Real VISUAILS output.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    padding: 80px 0;
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .hero-title .accent {
+    color: var(--brand-primary);
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .hero-trust-signals {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    background: #F8F9FA;
+    border-radius: var(--radius-sm);
+    border-left: 4px solid var(--brand-primary);
+  }
+
+  .trust-item {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .btn {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    background: var(--brand-primary);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: var(--brand-primary-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 82, 204, 0.2);
+  }
+
+  .btn-secondary {
+    background: var(--bg-raised);
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--brand-primary);
+    background: #F0F2F5;
+  }
+
+  .btn-tertiary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .btn-tertiary:hover {
+    border-color: var(--text-secondary);
+    background: var(--bg-base);
+  }
+
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .visual-caption {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    text-align: center;
+    margin: 0;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-tertiary);
+    width: fit-content;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .hero-section {
+      padding: 60px 0;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-section {
+      padding: 40px 0;
+    }
+
+    .hero-title {
+      font-size: 1.8rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+
+    .hero-ctas {
+      flex-direction: column;
+    }
+
+    .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .hero-trust-signals {
+      gap: 6px;
+      padding: 12px;
+    }
+
+    .trust-item {
+      font-size: 12px;
+    }
+  }
+</style>

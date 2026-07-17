@@ -1,0 +1,349 @@
+---
+// Before/After Slider - Draggable comparison slider
+interface Props {
+  beforeImage: string;
+  afterImage: string;
+  beforeAlt: string;
+  afterAlt: string;
+  height?: string;
+  autoPlay?: boolean;
+  autoPlaySpeed?: number;
+}
+
+const {
+  beforeImage,
+  afterImage,
+  beforeAlt,
+  afterAlt,
+  height = '500px',
+  autoPlay = false,
+  autoPlaySpeed = 5000,
+} = Astro.props;
+
+const sliderId = `slider-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div class={`before-after-container`} style={`height: ${height}`} data-slider-id={sliderId}>
+  <!-- Before Image (Background) -->
+  <div class="before-image-wrapper">
+    <img src={beforeImage} alt={beforeAlt} loading="lazy" />
+  </div>
+
+  <!-- After Image (Foreground, clipped) -->
+  <div class="after-image-wrapper">
+    <img src={afterImage} alt={afterAlt} loading="lazy" />
+  </div>
+
+  <!-- Draggable Handle -->
+  <div class="slider-handle" role="slider" aria-label="Before/after comparison slider">
+    <div class="slider-line"></div>
+    <div class="slider-button">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Left arrow -->
+        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        <!-- Right arrow -->
+        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- Labels -->
+  <div class="label before-label">
+    <span>Before</span>
+  </div>
+  <div class="label after-label">
+    <span>After</span>
+  </div>
+
+  <!-- Drag hint (shows on hover, hides after first drag) -->
+  <div class="drag-hint">
+    Drag to compare
+  </div>
+</div>
+
+<script define:vars={{ sliderId, autoPlay, autoPlaySpeed }}>
+  function initBeforeAfterSlider() {
+    const container = document.querySelector(`[data-slider-id="${sliderId}"]`);
+    if (!container) return;
+
+    const handle = container.querySelector('.slider-handle');
+    const afterWrapper = container.querySelector('.after-image-wrapper');
+    const dragHint = container.querySelector('.drag-hint');
+    let isDragging = false;
+    let hasInteracted = false;
+    let autoPlayInterval = null;
+
+    function updateSliderPosition(clientX) {
+      const rect = container.getBoundingClientRect();
+      let x = clientX - rect.left;
+
+      // Clamp to container bounds
+      x = Math.max(0, Math.min(x, rect.width));
+
+      const percentage = (x / rect.width) * 100;
+
+      handle.style.left = `${percentage}%`;
+      afterWrapper.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+
+      // Hide hint after first interaction
+      if (dragHint && !hasInteracted) {
+        hasInteracted = true;
+        dragHint.style.opacity = '0';
+        setTimeout(() => {
+          dragHint.style.display = 'none';
+        }, 300);
+      }
+    }
+
+    function startDrag(e) {
+      isDragging = true;
+      container.classList.add('dragging');
+      updateSliderPosition(e.clientX || e.touches?.[0]?.clientX);
+      stopAutoPlay();
+    }
+
+    function stopDrag() {
+      isDragging = false;
+      container.classList.remove('dragging');
+      if (autoPlay) {
+        startAutoPlay();
+      }
+    }
+
+    function onMove(e) {
+      if (!isDragging) return;
+      const clientX = e.clientX || e.touches?.[0]?.clientX;
+      updateSliderPosition(clientX);
+    }
+
+    function startAutoPlay() {
+      if (!autoPlay) return;
+      autoPlayInterval = setInterval(() => {
+        const rect = container.getBoundingClientRect();
+        const handle = container.querySelector('.slider-handle');
+        let currentPercent = parseFloat(handle.style.left) || 50;
+
+        currentPercent += 0.5;
+        if (currentPercent > 100) currentPercent = 0;
+
+        handle.style.left = `${currentPercent}%`;
+        afterWrapper.style.clipPath = `inset(0 ${100 - currentPercent}% 0 0)`;
+      }, autoPlaySpeed / 100);
+    }
+
+    function stopAutoPlay() {
+      if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = null;
+      }
+    }
+
+    // Event listeners
+    handle.addEventListener('mousedown', startDrag);
+    handle.addEventListener('touchstart', startDrag);
+    document.addEventListener('mouseup', stopDrag);
+    document.addEventListener('touchend', stopDrag);
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('touchmove', onMove);
+
+    // Initial position (50%)
+    handle.style.left = '50%';
+    afterWrapper.style.clipPath = 'inset(0 50% 0 0)';
+
+    // Start autoplay if enabled
+    if (autoPlay) {
+      startAutoPlay();
+    }
+
+    // Pause on hover (if autoPlay)
+    container.addEventListener('mouseenter', () => {
+      if (autoPlay && !isDragging) stopAutoPlay();
+    });
+
+    container.addEventListener('mouseleave', () => {
+      if (autoPlay && !isDragging) startAutoPlay();
+    });
+
+    // Keyboard support
+    handle.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        updateSliderPosition(container.getBoundingClientRect().left +
+          (parseFloat(handle.style.left) - 5) / 100 * container.offsetWidth);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        updateSliderPosition(container.getBoundingClientRect().left +
+          (parseFloat(handle.style.left) + 5) / 100 * container.offsetWidth);
+      }
+    });
+
+    handle.setAttribute('tabindex', '0');
+  }
+
+  // Initialize on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBeforeAfterSlider);
+  } else {
+    initBeforeAfterSlider();
+  }
+</script>
+
+<style>
+  .before-after-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 12px;
+    user-select: none;
+    cursor: ew-resize;
+    background-color: #f8f9fa;
+  }
+
+  .before-image-wrapper,
+  .after-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .before-image-wrapper img,
+  .after-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .after-image-wrapper {
+    clip-path: inset(0 50% 0 0);
+  }
+
+  .slider-handle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(0, 82, 204, 0.2), rgba(0, 82, 204, 0.1));
+    transform: translateX(-50%);
+    z-index: 5;
+    transition: background 0.2s ease;
+  }
+
+  .before-after-container.dragging .slider-handle {
+    background: linear-gradient(90deg, rgba(0, 82, 204, 0.4), rgba(0, 82, 204, 0.3));
+  }
+
+  .slider-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: #0052cc;
+    transform: translateX(-50%);
+    box-shadow: 0 0 8px rgba(0, 82, 204, 0.3);
+  }
+
+  .slider-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0, 82, 204, 0.2);
+    color: #0052cc;
+    font-weight: bold;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+
+  .before-after-container.dragging .slider-button {
+    box-shadow: 0 6px 20px rgba(0, 82, 204, 0.3);
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .slider-button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .label {
+    position: absolute;
+    top: 16px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #1a202c;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(4px);
+    z-index: 4;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .before-label {
+    left: 16px;
+  }
+
+  .after-label {
+    right: 16px;
+  }
+
+  .drag-hint {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 82, 204, 0.9);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    z-index: 3;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  @media (max-width: 640px) {
+    .slider-button {
+      width: 40px;
+      height: 40px;
+    }
+
+    .slider-button svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .label {
+      font-size: 11px;
+      top: 12px;
+    }
+
+    .before-label {
+      left: 12px;
+    }
+
+    .after-label {
+      right: 12px;
+    }
+
+    .drag-hint {
+      font-size: 11px;
+      bottom: 12px;
+    }
+  }
+</style>

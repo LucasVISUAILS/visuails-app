@@ -1,0 +1,121 @@
+---
+// AI Mood Descriptor - Shows the "vibe" of a style
+interface Props {
+  mood: string;
+  emoji: string;
+  description: string;
+  keywords?: string[];
+  className?: string;
+}
+
+const { mood, emoji, description, keywords = [], className = '' } = Astro.props;
+---
+
+<div class={`mood-descriptor ${className}`}>
+  <div class="mood-header">
+    <span class="mood-emoji">{emoji}</span>
+    <span class="mood-name">{mood}</span>
+  </div>
+
+  <p class="mood-description">
+    {description}
+  </p>
+
+  {keywords && keywords.length > 0 && (
+    <div class="mood-keywords">
+      {keywords.map((keyword) => (
+        <span class="keyword-tag">{keyword}</span>
+      ))}
+    </div>
+  )}
+</div>
+
+<style>
+  .mood-descriptor {
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #0052cc;
+    transition: all 0.2s ease;
+  }
+
+  .mood-descriptor:hover {
+    background: #f0f2f5;
+    transform: translateX(4px);
+    box-shadow: 0 2px 8px rgba(0, 82, 204, 0.1);
+  }
+
+  .mood-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .mood-emoji {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+  }
+
+  .mood-name {
+    font-weight: 600;
+    color: #1a202c;
+    font-size: 14px;
+    letter-spacing: -0.3px;
+  }
+
+  .mood-description {
+    color: #718096;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  .mood-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .keyword-tag {
+    display: inline-block;
+    padding: 4px 8px;
+    background: #ffffff;
+    color: #0052cc;
+    font-size: 11px;
+    font-weight: 500;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+    letter-spacing: 0.3px;
+  }
+
+  .keyword-tag:hover {
+    background: #0052cc;
+    color: #ffffff;
+  }
+
+  @media (max-width: 640px) {
+    .mood-descriptor {
+      padding: 12px;
+    }
+
+    .mood-emoji {
+      width: 28px;
+      height: 28px;
+      font-size: 20px;
+    }
+
+    .mood-name {
+      font-size: 13px;
+    }
+
+    .mood-description {
+      font-size: 12px;
+    }
+  }
+</style>

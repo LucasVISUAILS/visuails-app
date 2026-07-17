@@ -1,0 +1,370 @@
+---
+// How It Works - Interactive 3-step section
+---
+
+<section class="how-it-works">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">The Process</span>
+      <h2>How It Works in 3 Steps</h2>
+      <p>Get studio-quality visuals faster than traditional photography.</p>
+    </div>
+
+    <div class="steps-grid">
+      <!-- Step 1 -->
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-icon">📤</div>
+
+        <h3>Upload & Brief</h3>
+        <p>Share your product photo and a quick brief about your vision. Takes 5 minutes.</p>
+
+        <div class="step-details">
+          <ul>
+            <li>Upload product photos</li>
+            <li>Describe your style</li>
+            <li>Select angles/options</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Arrow -->
+      <div class="step-arrow" aria-hidden="true">→</div>
+
+      <!-- Step 2 -->
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-icon">✨</div>
+
+        <h3>We Generate</h3>
+        <p>Our AI creates variations in your brand aesthetic. Full turnaround: 24-48 hours.</p>
+
+        <div class="step-details">
+          <ul>
+            <li>AI processes your brief</li>
+            <li>Generates variations</li>
+            <li>Quality check</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Arrow -->
+      <div class="step-arrow" aria-hidden="true">→</div>
+
+      <!-- Step 3 -->
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <div class="step-icon">📥</div>
+
+        <h3>Download & Use</h3>
+        <p>High-res files ready for your storefront, ads, social—everything you need.</p>
+
+        <div class="step-details">
+          <ul>
+            <li>Download high-res files</li>
+            <li>Multiple formats</li>
+            <li>Use everywhere</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline-bar">
+      <div class="timeline-segment">
+        <span class="timeline-label">Upload</span>
+      </div>
+      <div class="timeline-segment active">
+        <span class="timeline-label">24-48h</span>
+      </div>
+      <div class="timeline-segment">
+        <span class="timeline-label">Download</span>
+      </div>
+    </div>
+
+    <!-- Benefits -->
+    <div class="benefits-grid">
+      <div class="benefit-box">
+        <span class="benefit-icon">⚡</span>
+        <strong>Fast</strong>
+        <p>2-3 days vs. 2-3 months with traditional shoots</p>
+      </div>
+
+      <div class="benefit-box">
+        <span class="benefit-icon">💰</span>
+        <strong>Affordable</strong>
+        <p>€19-35 per image vs. €500+ traditional photography</p>
+      </div>
+
+      <div class="benefit-box">
+        <span class="benefit-icon">✓</span>
+        <strong>Consistent</strong>
+        <p>On-brand aesthetic guaranteed across all visuals</p>
+      </div>
+
+      <div class="benefit-box">
+        <span class="benefit-icon">∞</span>
+        <strong>Scalable</strong>
+        <p>Generate unlimited variations instantly</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .how-it-works {
+    padding: 80px 0;
+    background: #FFFFFF;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-tertiary);
+    margin-bottom: 16px;
+  }
+
+  .section-header h2 {
+    font-size: 2.4rem;
+    color: var(--text-primary);
+    margin: 0 0 16px 0;
+  }
+
+  .section-header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
+    align-items: flex-start;
+  }
+
+  .step-card {
+    background: #F8F9FA;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius);
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+    grid-column: span 1;
+  }
+
+  .step-card:hover {
+    border-color: var(--brand-primary);
+    box-shadow: 0 4px 16px rgba(0, 82, 204, 0.1);
+    transform: translateY(-4px);
+  }
+
+  .step-number {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--brand-primary);
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .step-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+  }
+
+  .step-card h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin: 0 0 12px 0;
+  }
+
+  .step-card p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0 0 16px 0;
+  }
+
+  .step-details {
+    width: 100%;
+  }
+
+  .step-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .step-details li {
+    font-size: 12px;
+    color: var(--text-tertiary);
+  }
+
+  .step-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--text-tertiary);
+    font-weight: 300;
+  }
+
+  /* Timeline Bar */
+  .timeline-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-bottom: 64px;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+    height: 8px;
+    background: var(--border-subtle);
+  }
+
+  .timeline-segment {
+    background: var(--border-subtle);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .timeline-segment.active {
+    background: linear-gradient(90deg, var(--brand-primary), var(--accent-success));
+    animation: pulse-timeline 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-timeline {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  .timeline-label {
+    position: absolute;
+    top: -28px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+
+  /* Benefits Grid */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .benefit-box {
+    background: linear-gradient(135deg, #F8F9FA, #F0F2F5);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 24px;
+    text-align: center;
+    transition: all 0.2s ease;
+  }
+
+  .benefit-box:hover {
+    border-color: var(--brand-primary);
+    background: linear-gradient(135deg, #FFFFFF, #F8F9FA);
+    box-shadow: 0 2px 8px rgba(0, 82, 204, 0.08);
+  }
+
+  .benefit-icon {
+    font-size: 32px;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .benefit-box strong {
+    display: block;
+    font-size: 14px;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+
+  .benefit-box p {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 1024px) {
+    .steps-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .step-arrow {
+      display: none;
+    }
+
+    .benefits-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .how-it-works {
+      padding: 60px 0;
+    }
+
+    .section-header h2 {
+      font-size: 1.8rem;
+    }
+
+    .section-header p {
+      font-size: 1rem;
+    }
+
+    .step-card {
+      padding: 24px 16px;
+    }
+
+    .step-number {
+      width: 36px;
+      height: 36px;
+      font-size: 18px;
+    }
+
+    .step-icon {
+      font-size: 32px;
+    }
+
+    .step-card h3 {
+      font-size: 1rem;
+    }
+
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .timeline-label {
+      position: static;
+      display: block;
+      top: auto;
+      margin-top: 12px;
+    }
+  }
+</style>

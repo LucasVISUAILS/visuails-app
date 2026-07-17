@@ -1,0 +1,243 @@
+---
+// Social Proof Section with Animated Counters
+import AnimatedCounter from './AnimatedCounter.astro';
+---
+
+<section class="social-proof">
+  <div class="container">
+    <div class="proof-header">
+      <span class="eyebrow">Trusted by Leading Brands</span>
+      <h2>Our Impact</h2>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+      <AnimatedCounter
+        label="Brands Worldwide"
+        value={500}
+        icon="👥"
+        duration={2000}
+      />
+
+      <AnimatedCounter
+        label="Visuals Generated"
+        value={2500000}
+        prefix=""
+        suffix="M+"
+        icon="🖼️"
+        duration={2500}
+      />
+
+      <AnimatedCounter
+        label="Average Delivery"
+        value={48}
+        suffix="h"
+        icon="⚡"
+        duration={1500}
+      />
+
+      <AnimatedCounter
+        label="Client Retention"
+        value={95}
+        suffix="%"
+        icon="💎"
+        duration={2000}
+      />
+
+      <AnimatedCounter
+        label="ROI Lift (Avg)"
+        value={70}
+        suffix="%"
+        icon="📈"
+        duration={2000}
+      />
+
+      <AnimatedCounter
+        label="Cost Savings"
+        value={10}
+        suffix="x cheaper"
+        icon="💰"
+        duration={2000}
+      />
+    </div>
+
+    <!-- Trust Badges -->
+    <div class="trust-section">
+      <h3>Why Brands Choose VISUAILS</h3>
+      <div class="trust-grid">
+        <div class="trust-badge">
+          <span class="badge-emoji">🎯</span>
+          <strong>Results-Focused</strong>
+          <p>Every visual optimized for conversion, not just aesthetics.</p>
+        </div>
+
+        <div class="trust-badge">
+          <span class="badge-emoji">🤖</span>
+          <strong>AI-Powered</strong>
+          <p>Advanced AI that learns your brand and delivers consistency.</p>
+        </div>
+
+        <div class="trust-badge">
+          <span class="badge-emoji">⚙️</span>
+          <strong>Full Control</strong>
+          <p>Revision rounds included. Your feedback shapes the output.</p>
+        </div>
+
+        <div class="trust-badge">
+          <span class="badge-emoji">🚀</span>
+          <strong>Scale Instantly</strong>
+          <p>Need 500 images? Get them in days, not months.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .social-proof {
+    padding: 80px 0;
+    background: #FFFFFF;
+  }
+
+  .proof-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-tertiary);
+    margin-bottom: 16px;
+  }
+
+  .proof-header h2 {
+    font-size: 2.4rem;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+    margin-bottom: 80px;
+  }
+
+  /* Trust Section */
+  .trust-section {
+    padding-top: 64px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .trust-section h3 {
+    text-align: center;
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    margin: 0 0 48px 0;
+  }
+
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .trust-badge {
+    background: linear-gradient(135deg, #F8F9FA, #F0F2F5);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 24px;
+    text-align: center;
+    transition: all 0.2s ease;
+  }
+
+  .trust-badge:hover {
+    border-color: var(--brand-primary);
+    background: linear-gradient(135deg, #FFFFFF, #F8F9FA);
+    box-shadow: 0 4px 16px rgba(0, 82, 204, 0.1);
+    transform: translateY(-4px);
+  }
+
+  .badge-emoji {
+    font-size: 32px;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .trust-badge strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+
+  .trust-badge p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 1024px) {
+    .stats-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .trust-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .social-proof {
+      padding: 60px 0;
+    }
+
+    .proof-header h2 {
+      font-size: 1.8rem;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+
+    .trust-section {
+      padding-top: 48px;
+    }
+
+    .trust-section h3 {
+      font-size: 1.4rem;
+      margin-bottom: 24px;
+    }
+
+    .trust-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .trust-badge {
+      padding: 16px;
+    }
+
+    .badge-emoji {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .trust-badge strong {
+      font-size: 13px;
+    }
+
+    .trust-badge p {
+      font-size: 12px;
+    }
+  }
+</style>

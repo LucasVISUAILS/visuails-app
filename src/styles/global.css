@@ -1,27 +1,39 @@
 :root {
-  --brand-primary: #4d8dff;
-  --brand-primary-dim: #3a6fd6;
+  /* v5 Light Mode Color Palette */
+  --brand-primary: #0052CC;
+  --brand-primary-light: #1570FF;
+  --brand-primary-dim: #003E99;
+  --brand-secondary: #00AA44;
+  --brand-secondary-light: #1ABC9C;
 
-  --bg-void: #08090d;
-  --bg-base: #0b0d13;
-  --bg-raised: #10131c;
-  --bg-surface: #12151f;
+  /* Backgrounds */
+  --bg-void: #FFFFFF;
+  --bg-base: #F8F9FA;
+  --bg-raised: #F0F2F5;
+  --bg-surface: #FFFFFF;
 
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.14);
-  --border-accent: rgba(77, 141, 255, 0.4);
+  /* Borders */
+  --border-subtle: #E2E8F0;
+  --border-strong: #CBD5E1;
+  --border-accent: rgba(0, 82, 204, 0.2);
 
-  --text-primary: #f1f2f6;
-  --text-secondary: #9599a8;
-  --text-tertiary: #62677a;
+  /* Text */
+  --text-primary: #1A202C;
+  --text-secondary: #718096;
+  --text-tertiary: #A0AEC0;
 
-  --radius: 18px;
-  --radius-sm: 12px;
+  /* Accents */
+  --accent-success: #00AA44;
+  --accent-warning: #FF6B35;
+  --accent-info: #0052CC;
+
+  --radius: 12px;
+  --radius-sm: 8px;
   --max-width: 1180px;
 
-  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-accent: 'Instrument Serif', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-accent: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 * { box-sizing: border-box; }

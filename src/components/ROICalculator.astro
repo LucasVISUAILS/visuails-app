@@ -1,0 +1,465 @@
+---
+// ROI Calculator - Interactive calculator showing savings vs traditional studio shoots
+---
+
+<div class="roi-calculator">
+  <h3 class="calculator-title">Calculate Your Savings</h3>
+  <p class="calculator-subtitle">See how much VISUAILS saves you vs. traditional studio shoots</p>
+
+  <div class="calculator-container">
+    <!-- Input Section -->
+    <div class="calculator-inputs">
+      <div class="input-group">
+        <label for="shoot-frequency">How many photoshoots per year?</label>
+        <div class="input-wrapper">
+          <input
+            type="range"
+            id="shoot-frequency"
+            name="shoot-frequency"
+            min="1"
+            max="24"
+            value="4"
+            class="slider-input"
+          />
+          <span class="input-value">
+            <span id="frequency-value">4</span> shoots/year
+          </span>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="images-per-shoot">Images per shoot</label>
+        <div class="input-wrapper">
+          <input
+            type="range"
+            id="images-per-shoot"
+            name="images-per-shoot"
+            min="10"
+            max="500"
+            step="10"
+            value="100"
+            class="slider-input"
+          />
+          <span class="input-value">
+            <span id="images-value">100</span> images
+          </span>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="studio-cost">Studio shoot cost (per shoot)</label>
+        <div class="input-wrapper currency">
+          <span class="currency-symbol">€</span>
+          <input
+            type="number"
+            id="studio-cost"
+            name="studio-cost"
+            value="3000"
+            min="500"
+            max="50000"
+            class="text-input"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Section -->
+    <div class="calculator-results">
+      <div class="result-card">
+        <span class="result-label">Traditional Studio (Annual)</span>
+        <span class="result-value" id="studio-total">€12,000</span>
+      </div>
+
+      <div class="divider">vs</div>
+
+      <div class="result-card highlighted">
+        <span class="result-label">VISUAILS (Annual)</span>
+        <span class="result-value" id="visuails-total">€2,000</span>
+      </div>
+
+      <div class="result-card savings">
+        <span class="result-label">You Save</span>
+        <span class="result-value" id="savings-total">€10,000</span>
+        <span class="savings-percentage" id="savings-percent">(83%)</span>
+      </div>
+
+      <div class="breakdown">
+        <p class="breakdown-label">Breakdown:</p>
+        <ul class="breakdown-list">
+          <li>
+            <span>Studio shoots:</span>
+            <span id="breakdown-shoots">4 × €3,000</span>
+          </li>
+          <li>
+            <span>VISUAILS cost:</span>
+            <span id="breakdown-visuails">400 images × €5/img</span>
+          </li>
+          <li class="breakdown-note">
+            ✓ Includes 3 revision rounds per order
+          </li>
+          <li class="breakdown-note">
+            ✓ Unlimited angle variations
+          </li>
+          <li class="breakdown-note">
+            ✓ 48-hour turnaround (vs. 2-3 months)
+          </li>
+        </ul>
+      </div>
+
+      <button class="cta-button">Start Your First Order →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function calculateROI() {
+    const frequency = parseInt(
+      document.getElementById('shoot-frequency').value || 4,
+      10
+    );
+    const imagesPerShoot = parseInt(
+      document.getElementById('images-per-shoot').value || 100,
+      10
+    );
+    const studioCost = parseFloat(
+      document.getElementById('studio-cost').value || 3000
+    );
+
+    // VISUAILS pricing (average across services)
+    const visuailsPricePerImage = 22; // Average of €19-35
+
+    // Calculations
+    const totalStudioCost = frequency * studioCost;
+    const totalVisuailsCost = frequency * imagesPerShoot * (visuailsPricePerImage / 100);
+    const totalSavings = totalStudioCost - totalVisuailsCost;
+    const savingsPercent = Math.round((totalSavings / totalStudioCost) * 100);
+
+    // Update display values
+    document.getElementById('frequency-value').textContent = frequency;
+    document.getElementById('images-value').textContent = imagesPerShoot;
+
+    document.getElementById('studio-total').textContent = `€${totalStudioCost.toLocaleString()}`;
+    document.getElementById('visuails-total').textContent = `€${Math.round(
+      totalVisuailsCost
+    ).toLocaleString()}`;
+    document.getElementById('savings-total').textContent = `€${Math.round(
+      totalSavings
+    ).toLocaleString()}`;
+    document.getElementById('savings-percent').textContent = `(${savingsPercent}%)`;
+
+    // Breakdown
+    document.getElementById('breakdown-shoots').textContent = `${frequency} × €${studioCost.toLocaleString()}`;
+    document.getElementById('breakdown-visuails').textContent =
+      `${frequency * imagesPerShoot} images × €${visuailsPricePerImage}`;
+  }
+
+  // Initialize
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      calculateROI();
+
+      document.getElementById('shoot-frequency').addEventListener('input', calculateROI);
+      document.getElementById('images-per-shoot').addEventListener('input', calculateROI);
+      document.getElementById('studio-cost').addEventListener('input', calculateROI);
+    });
+  } else {
+    calculateROI();
+
+    document.getElementById('shoot-frequency').addEventListener('input', calculateROI);
+    document.getElementById('images-per-shoot').addEventListener('input', calculateROI);
+    document.getElementById('studio-cost').addEventListener('input', calculateROI);
+  }
+</script>
+
+<style>
+  .roi-calculator {
+    background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%);
+    border-radius: 12px;
+    padding: 32px;
+    margin: 48px 0;
+  }
+
+  .calculator-title {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a202c;
+  }
+
+  .calculator-subtitle {
+    margin: 0 0 32px 0;
+    color: #718096;
+    font-size: 14px;
+  }
+
+  .calculator-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  /* Inputs */
+  .calculator-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .input-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a202c;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .input-wrapper.currency {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px;
+    gap: 0;
+  }
+
+  .currency-symbol {
+    color: #718096;
+    font-weight: 600;
+  }
+
+  .text-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    color: #1a202c;
+    font-weight: 500;
+  }
+
+  .text-input:focus {
+    outline: none;
+  }
+
+  .slider-input {
+    flex: 1;
+    height: 6px;
+    border-radius: 3px;
+    background: #e2e8f0;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .slider-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #0052cc;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 82, 204, 0.3);
+  }
+
+  .slider-input::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+  }
+
+  .slider-input::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #0052cc;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 82, 204, 0.3);
+  }
+
+  .slider-input::-moz-range-thumb:hover {
+    transform: scale(1.1);
+  }
+
+  .input-value {
+    font-size: 12px;
+    color: #718096;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  /* Results */
+  .calculator-results {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .result-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+  }
+
+  .result-card:hover {
+    border-color: #0052cc;
+    box-shadow: 0 2px 8px rgba(0, 82, 204, 0.1);
+  }
+
+  .result-card.highlighted {
+    border-color: #0052cc;
+    background: linear-gradient(135deg, #f0f2f5, #e8eef7);
+  }
+
+  .result-card.savings {
+    background: linear-gradient(135deg, #f0fff4, #e8f9f0);
+    border-color: #00aa44;
+  }
+
+  .result-label {
+    font-size: 12px;
+    color: #718096;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+  }
+
+  .result-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a202c;
+  }
+
+  .result-card.highlighted .result-value {
+    color: #0052cc;
+  }
+
+  .result-card.savings .result-value {
+    color: #00aa44;
+  }
+
+  .savings-percentage {
+    font-size: 14px;
+    color: #718096;
+    font-weight: 500;
+  }
+
+  .divider {
+    text-align: center;
+    color: #a0aec0;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .breakdown {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 8px;
+  }
+
+  .breakdown-label {
+    margin: 0 0 8px 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: #1a202c;
+    text-transform: uppercase;
+  }
+
+  .breakdown-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .breakdown-list li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #718096;
+    line-height: 1.5;
+  }
+
+  .breakdown-list li span:first-child {
+    font-weight: 500;
+  }
+
+  .breakdown-note {
+    color: #00aa44;
+    font-weight: 500;
+    justify-content: flex-start;
+    gap: 6px;
+  }
+
+  .cta-button {
+    background: #0052cc;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 8px;
+  }
+
+  .cta-button:hover {
+    background: #1570ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 82, 204, 0.2);
+  }
+
+  .cta-button:active {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 1024px) {
+    .calculator-container {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .roi-calculator {
+      padding: 20px;
+      margin: 32px 0;
+    }
+
+    .calculator-title {
+      font-size: 20px;
+    }
+
+    .result-card {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .result-value {
+      font-size: 18px;
+    }
+  }
+</style>
