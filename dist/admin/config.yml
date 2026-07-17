@@ -1,0 +1,123 @@
+backend:
+  name: github
+  repo: LucasVISUAILS/visuails-app
+  branch: main
+  auth_type: pkce # client-side OAuth — no backend server or secret needed
+  app_id: REPLACE_WITH_YOUR_GITHUB_OAUTH_CLIENT_ID # see ADMIN_CMS_SETUP.md — one-time 5 minute setup
+
+# Where uploaded images from the CMS land, and the URL prefix used to
+# reference them in pages (matches the existing public/images/ convention).
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "services"
+    label: "Services"
+    folder: "src/content/services"
+    extension: "json"
+    format: "json"
+    create: false # exactly 3 files (catalog, lifestyle, video) — adding/removing
+    delete: false # here would silently break routes, nav links and the sitemap
+    identifier_field: "name"
+    summary: "{{name}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Meta Name (used in <title> tags)", name: "metaName", widget: "string" }
+      - { label: "Tagline", name: "tagline", widget: "string" }
+      - { label: "Short Description", name: "shortDescription", widget: "text" }
+      - { label: "Hero Image", name: "heroImage", widget: "image" }
+      - { label: "Hero Image Alt Text", name: "heroImageAlt", widget: "string" }
+      - label: "How It Works (steps)"
+        name: "howItWorks"
+        widget: "list"
+        summary: "{{fields.title}}"
+        fields:
+          - { label: "Step Title", name: "title", widget: "string" }
+          - { label: "Step Description", name: "description", widget: "text" }
+      - label: "Styles"
+        name: "styles"
+        widget: "list"
+        summary: "{{fields.name}}"
+        fields:
+          - { label: "Key (short, lowercase, e.g. classic)", name: "key", widget: "string" }
+          - { label: "Style Name", name: "name", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Price (EUR, number only — leave blank for custom/quote styles)", name: "price", widget: "string", required: false }
+          - { label: "Price Unit (e.g. \"per visual\" or \"custom quote\")", name: "priceUnit", widget: "string" }
+          - { label: "Is Custom Style?", name: "isCustom", widget: "boolean", default: false }
+          - label: "Features"
+            name: "features"
+            widget: "list"
+            field: { label: "Feature", name: "item", widget: "string" }
+          - { label: "Style Image", name: "image", widget: "image" }
+          - { label: "Style Image Alt Text", name: "imageAlt", widget: "string" }
+          - { label: "Button Label (e.g. \"Get Started\" or \"Get in Touch\")", name: "ctaLabel", widget: "string" }
+      - label: "FAQs"
+        name: "faqs"
+        widget: "list"
+        summary: "{{fields.q}}"
+        fields:
+          - { label: "Question", name: "q", widget: "string" }
+          - { label: "Answer", name: "a", widget: "text" }
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "general"
+        label: "General Settings"
+        file: "src/data/site.json"
+        fields:
+          - { label: "Business Name", name: "name", widget: "string" }
+          - { label: "Legal Name", name: "legalName", widget: "string" }
+          - { label: "Site URL (no trailing slash)", name: "url", widget: "string" }
+          - { label: "Description (used in meta tags & schema)", name: "description", widget: "text" }
+          - { label: "Contact Email", name: "email", widget: "string" }
+          - label: "WhatsApp"
+            name: "whatsapp"
+            widget: "object"
+            fields:
+              - { label: "Display Number (e.g. +31 6 25436130)", name: "display", widget: "string" }
+              - { label: "wa.me Link (e.g. https://wa.me/31625436130)", name: "link", widget: "string" }
+          - label: "Address"
+            name: "address"
+            widget: "object"
+            fields:
+              - { label: "City", name: "locality", widget: "string" }
+              - { label: "Country Code (e.g. NL)", name: "country", widget: "string" }
+          - label: "Business Hours"
+            name: "hours"
+            widget: "object"
+            fields:
+              - { label: "Weekday Days (e.g. Mo-Fr)", name: "weekdayDays", widget: "string" }
+              - { label: "Weekday Opens (24h, e.g. 08:00)", name: "weekdayOpens", widget: "string" }
+              - { label: "Weekday Closes (24h, e.g. 20:00)", name: "weekdayCloses", widget: "string" }
+              - { label: "Weekend Days (e.g. Sa-Su)", name: "weekendDays", widget: "string" }
+              - { label: "Weekend Opens (24h, e.g. 09:00)", name: "weekendOpens", widget: "string" }
+              - { label: "Weekend Closes (24h, e.g. 20:00)", name: "weekendCloses", widget: "string" }
+              - { label: "Timezone label (e.g. CET/CEST)", name: "timezone", widget: "string" }
+          - label: "Company Registration"
+            name: "registration"
+            widget: "object"
+            fields:
+              - { label: "KVK Number", name: "kvk", widget: "string" }
+              - { label: "VAT Number", name: "vat", widget: "string" }
+          - label: "Social Links (leave blank if none)"
+            name: "social"
+            widget: "object"
+            fields:
+              - { label: "Facebook URL", name: "facebook", widget: "string", required: false }
+              - { label: "Instagram URL", name: "instagram", widget: "string", required: false }
+              - { label: "LinkedIn URL", name: "linkedin", widget: "string", required: false }
+          - { label: "Price Range (e.g. €€)", name: "priceRange", widget: "string" }
+          - { label: "Logo Image", name: "logo", widget: "image" }
+          - { label: "Default Social Share Image", name: "ogImage", widget: "image" }
+          - { label: "About Text (used in the homepage About section)", name: "about", widget: "text" }
+          - label: "Stats (homepage stat cards)"
+            name: "stats"
+            widget: "list"
+            summary: "{{fields.value}} — {{fields.label}}"
+            fields:
+              - { label: "Value (e.g. 90%)", name: "value", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Detail (optional supporting text)", name: "detail", widget: "string", required: false }
