@@ -6,11 +6,9 @@ const services = [
   {
     id: 'catalog',
     name: 'Catalog Visuals',
-    emoji: '📸',
     description: 'Clean, consistent product shots for your storefront and marketplaces.',
     startingPrice: '€19',
     mood: 'Minimal & Professional',
-    moodEmoji: '✓',
     moodDesc: 'Clean, consistent, ready for marketplaces',
     keywords: ['Ecommerce', 'Clean', 'Professional'],
     highlights: ['All angles', 'Consistent lighting', 'Marketplace-ready'],
@@ -20,11 +18,9 @@ const services = [
   {
     id: 'lifestyle',
     name: 'Lifestyle Visuals',
-    emoji: '👥',
     description: 'Your product in real, styled scenes with consistent models.',
     startingPrice: '€35',
     mood: 'Lifestyle & Engaging',
-    moodEmoji: '🎭',
     moodDesc: 'Real models, authentic vibes, conversion-focused',
     keywords: ['Authentic', 'Styled', 'Models'],
     highlights: ['Real models', 'Styled scenes', 'High conversion'],
@@ -34,11 +30,9 @@ const services = [
   {
     id: 'video',
     name: 'Video Visuals',
-    emoji: '🎬',
     description: 'Ad-ready motion content built for paid social and product pages.',
     startingPrice: 'Custom',
     mood: 'Dynamic & Energetic',
-    moodEmoji: '⚡',
     moodDesc: 'Motion graphics, trending, ad-ready',
     keywords: ['Motion', 'Trending', 'Ads'],
     highlights: ['Motion graphics', 'Ad-ready', 'Social-optimized'],
@@ -66,9 +60,6 @@ const services = [
               alt={`${service.name} example`}
               loading="lazy"
             />
-            <div class="service-badge">
-              <span class="badge-emoji">{service.emoji}</span>
-            </div>
           </div>
 
           <!-- Content -->
@@ -80,7 +71,6 @@ const services = [
             <div class="service-mood">
               <MoodDescriptor
                 mood={service.mood}
-                emoji={service.moodEmoji}
                 description={service.moodDesc}
                 keywords={service.keywords}
               />
@@ -89,10 +79,7 @@ const services = [
             <!-- Highlights -->
             <ul class="service-highlights">
               {service.highlights.map((highlight) => (
-                <li key={highlight}>
-                  <span class="highlight-icon">✓</span>
-                  <span>{highlight}</span>
-                </li>
+                <li key={highlight}>{highlight}</li>
               ))}
             </ul>
 
@@ -110,41 +97,43 @@ const services = [
 
 <style>
   .service-selector {
-    padding: 80px 0;
+    padding: 120px 0;
     background: #F8F9FA;
   }
 
   .section-header {
     text-align: center;
-    margin-bottom: 64px;
+    margin-bottom: 72px;
   }
 
   .eyebrow {
     display: inline-block;
-    font-size: 12px;
+    font-size: 0.72rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.18em;
     color: var(--text-tertiary);
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
 
   .section-header h2 {
-    font-size: 2.4rem;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.1rem, 4vw, 3.2rem);
     color: var(--text-primary);
     margin: 0 0 16px 0;
   }
 
   .section-header p {
     color: var(--text-secondary);
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     margin: 0;
   }
 
   .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+    gap: 28px;
   }
 
   .service-card {
@@ -168,7 +157,7 @@ const services = [
   .service-image {
     position: relative;
     width: 100%;
-    height: 240px;
+    height: 260px;
     overflow: hidden;
     background: #F0F2F5;
   }
@@ -177,40 +166,27 @@ const services = [
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease;
   }
 
   .service-card:hover .service-image img {
     transform: scale(1.05);
   }
 
-  .service-badge {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.95);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-
   .service-content {
-    padding: 24px;
+    padding: 32px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 18px;
     flex: 1;
   }
 
   .service-title {
     margin: 0;
-    font-size: 1.3rem;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
     color: var(--text-primary);
   }
 
@@ -232,44 +208,43 @@ const services = [
     padding: 0;
     margin: 0;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 8px;
   }
 
   .service-highlights li {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
+    font-size: 0.8rem;
     color: var(--text-secondary);
-  }
-
-  .highlight-icon {
-    color: var(--accent-success);
-    font-weight: 700;
-    flex-shrink: 0;
+    background: var(--bg-base);
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    padding: 6px 14px;
   }
 
   .service-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 12px;
+    padding-top: 20px;
     border-top: 1px solid var(--border-subtle);
     margin-top: auto;
   }
 
   .service-price {
-    font-size: 12px;
+    font-size: 0.8rem;
     font-weight: 600;
     color: var(--text-tertiary);
   }
 
   .service-cta {
-    font-size: 13px;
+    font-size: 0.85rem;
     font-weight: 600;
     color: var(--brand-primary);
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .service-card:hover .service-cta {
+    transform: translateX(2px);
   }
 
   .service-card:hover .service-cta {

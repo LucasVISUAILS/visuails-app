@@ -13,31 +13,26 @@
     <div class="steps-grid">
       <!-- Step 1 -->
       <div class="step-card">
-        <div class="step-number">1</div>
-        <div class="step-icon">📤</div>
+        <span class="step-number">01</span>
 
-        <h3>Upload & Brief</h3>
+        <h3>Upload &amp; brief</h3>
         <p>Share your product photo and a quick brief about your vision. Takes 5 minutes.</p>
 
         <div class="step-details">
           <ul>
             <li>Upload product photos</li>
             <li>Describe your style</li>
-            <li>Select angles/options</li>
+            <li>Select angles &amp; options</li>
           </ul>
         </div>
       </div>
 
-      <!-- Arrow -->
-      <div class="step-arrow" aria-hidden="true">→</div>
-
       <!-- Step 2 -->
       <div class="step-card">
-        <div class="step-number">2</div>
-        <div class="step-icon">✨</div>
+        <span class="step-number">02</span>
 
-        <h3>We Generate</h3>
-        <p>Our AI creates variations in your brand aesthetic. Full turnaround: 24-48 hours.</p>
+        <h3>We generate</h3>
+        <p>Our AI creates variations in your brand aesthetic. Full turnaround: 24–48 hours.</p>
 
         <div class="step-details">
           <ul>
@@ -48,16 +43,12 @@
         </div>
       </div>
 
-      <!-- Arrow -->
-      <div class="step-arrow" aria-hidden="true">→</div>
-
       <!-- Step 3 -->
       <div class="step-card">
-        <div class="step-number">3</div>
-        <div class="step-icon">📥</div>
+        <span class="step-number">03</span>
 
-        <h3>Download & Use</h3>
-        <p>High-res files ready for your storefront, ads, social—everything you need.</p>
+        <h3>Download &amp; use</h3>
+        <p>High-res files ready for your storefront, ads, social — everything you need.</p>
 
         <div class="step-details">
           <ul>
@@ -85,27 +76,27 @@
     <!-- Benefits -->
     <div class="benefits-grid">
       <div class="benefit-box">
-        <span class="benefit-icon">⚡</span>
+        <span class="benefit-metric">2–3 days</span>
         <strong>Fast</strong>
-        <p>2-3 days vs. 2-3 months with traditional shoots</p>
+        <p>Versus 2–3 months with traditional shoots</p>
       </div>
 
       <div class="benefit-box">
-        <span class="benefit-icon">💰</span>
+        <span class="benefit-metric">€19–35</span>
         <strong>Affordable</strong>
-        <p>€19-35 per image vs. €500+ traditional photography</p>
+        <p>Per image, versus €500+ for traditional photography</p>
       </div>
 
       <div class="benefit-box">
-        <span class="benefit-icon">✓</span>
+        <span class="benefit-metric">100%</span>
         <strong>Consistent</strong>
         <p>On-brand aesthetic guaranteed across all visuals</p>
       </div>
 
       <div class="benefit-box">
-        <span class="benefit-icon">∞</span>
+        <span class="benefit-metric">Unlimited</span>
         <strong>Scalable</strong>
-        <p>Generate unlimited variations instantly</p>
+        <p>Generate as many variations as you need, instantly</p>
       </div>
     </div>
   </div>
@@ -113,42 +104,44 @@
 
 <style>
   .how-it-works {
-    padding: 80px 0;
+    padding: 120px 0;
     background: #FFFFFF;
   }
 
   .section-header {
     text-align: center;
-    margin-bottom: 64px;
+    margin-bottom: 72px;
   }
 
   .eyebrow {
     display: inline-block;
-    font-size: 12px;
+    font-size: 0.72rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.18em;
     color: var(--text-tertiary);
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
 
   .section-header h2 {
-    font-size: 2.4rem;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.1rem, 4vw, 3.2rem);
     color: var(--text-primary);
     margin: 0 0 16px 0;
   }
 
   .section-header p {
     color: var(--text-secondary);
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     margin: 0;
   }
 
   .steps-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 24px;
-    margin-bottom: 48px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-bottom: 64px;
     align-items: flex-start;
   }
 
@@ -156,54 +149,46 @@
     background: #F8F9FA;
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius);
-    padding: 32px 24px;
+    padding: 44px 36px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    transition: all 0.3s ease;
-    grid-column: span 1;
+    align-items: flex-start;
+    text-align: left;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
   }
 
   .step-card:hover {
     border-color: var(--brand-primary);
-    box-shadow: 0 4px 16px rgba(0, 82, 204, 0.1);
+    box-shadow: 0 12px 40px rgba(0, 82, 204, 0.08);
     transform: translateY(-4px);
   }
 
   .step-number {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: var(--brand-primary);
-    color: white;
-    font-weight: 700;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 16px;
-  }
-
-  .step-icon {
-    font-size: 40px;
-    margin-bottom: 16px;
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--brand-primary);
+    margin-bottom: 24px;
   }
 
   .step-card h3 {
-    font-size: 1.2rem;
+    font-size: 1.35rem;
     color: var(--text-primary);
     margin: 0 0 12px 0;
   }
 
   .step-card p {
-    font-size: 13px;
+    font-size: 0.95rem;
     color: var(--text-secondary);
-    margin: 0 0 16px 0;
+    margin: 0 0 24px 0;
+    line-height: 1.6;
   }
 
   .step-details {
     width: 100%;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-subtle);
   }
 
   .step-details ul {
@@ -212,21 +197,12 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
   }
 
   .step-details li {
-    font-size: 12px;
+    font-size: 0.85rem;
     color: var(--text-tertiary);
-  }
-
-  .step-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    color: var(--text-tertiary);
-    font-weight: 300;
   }
 
   /* Timeline Bar */
@@ -272,66 +248,66 @@
   .benefits-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    gap: 28px;
   }
 
   .benefit-box {
-    background: linear-gradient(135deg, #F8F9FA, #F0F2F5);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-sm);
-    padding: 24px;
-    text-align: center;
-    transition: all 0.2s ease;
+    background: transparent;
+    border-top: 1px solid var(--border-subtle);
+    padding: 28px 4px 0;
+    text-align: left;
+    transition: border-color 0.2s ease;
   }
 
   .benefit-box:hover {
     border-color: var(--brand-primary);
-    background: linear-gradient(135deg, #FFFFFF, #F8F9FA);
-    box-shadow: 0 2px 8px rgba(0, 82, 204, 0.08);
   }
 
-  .benefit-icon {
-    font-size: 32px;
+  .benefit-metric {
     display: block;
-    margin-bottom: 12px;
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
   }
 
   .benefit-box strong {
     display: block;
-    font-size: 14px;
-    color: var(--text-primary);
+    font-size: 0.95rem;
+    color: var(--brand-primary);
     margin-bottom: 8px;
+    font-weight: 600;
   }
 
   .benefit-box p {
-    font-size: 12px;
+    font-size: 0.85rem;
     color: var(--text-secondary);
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.5;
   }
 
   @media (max-width: 1024px) {
     .steps-grid {
       grid-template-columns: 1fr;
-      gap: 32px;
-    }
-
-    .step-arrow {
-      display: none;
+      gap: 20px;
     }
 
     .benefits-grid {
       grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
     }
   }
 
   @media (max-width: 640px) {
     .how-it-works {
-      padding: 60px 0;
+      padding: 72px 0;
     }
 
     .section-header h2 {
-      font-size: 1.8rem;
+      font-size: 2rem;
     }
 
     .section-header p {
@@ -339,21 +315,15 @@
     }
 
     .step-card {
-      padding: 24px 16px;
+      padding: 32px 28px;
     }
 
     .step-number {
-      width: 36px;
-      height: 36px;
-      font-size: 18px;
-    }
-
-    .step-icon {
-      font-size: 32px;
+      font-size: 2.4rem;
     }
 
     .step-card h3 {
-      font-size: 1rem;
+      font-size: 1.2rem;
     }
 
     .benefits-grid {

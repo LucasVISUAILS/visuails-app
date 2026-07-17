@@ -2,18 +2,16 @@
 // AI Mood Descriptor - Shows the "vibe" of a style
 interface Props {
   mood: string;
-  emoji: string;
   description: string;
   keywords?: string[];
   className?: string;
 }
 
-const { mood, emoji, description, keywords = [], className = '' } = Astro.props;
+const { mood, description, keywords = [], className = '' } = Astro.props;
 ---
 
 <div class={`mood-descriptor ${className}`}>
   <div class="mood-header">
-    <span class="mood-emoji">{emoji}</span>
     <span class="mood-name">{mood}</span>
   </div>
 
@@ -52,20 +50,12 @@ const { mood, emoji, description, keywords = [], className = '' } = Astro.props;
     margin-bottom: 8px;
   }
 
-  .mood-emoji {
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-  }
-
   .mood-name {
     font-weight: 600;
     color: #1a202c;
-    font-size: 14px;
-    letter-spacing: -0.3px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
 
   .mood-description {

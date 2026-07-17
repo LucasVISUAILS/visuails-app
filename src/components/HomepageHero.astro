@@ -9,7 +9,7 @@ const site = {
 };
 ---
 
-<section class="hero-section">
+<section class="hero-section atmos">
   <div class="container">
     <div class="hero-grid">
       <!-- Left: Text content -->
@@ -17,29 +17,25 @@ const site = {
         <span class="eyebrow">AI Product Visuals That Sell</span>
 
         <h1 class="hero-title">
-          Stunning Product Visuals in <span class="accent">48 Hours</span>
+          Stunning product visuals in <span class="accent">48 hours</span>
         </h1>
 
         <p class="hero-subtitle">
-          Your products deserve better than generic studio shots. VISUAILS generates studio-quality, on-brand visuals that convert—faster and 10x cheaper than traditional shoots.
+          Your products deserve better than generic studio shots. VISUAILS generates studio-quality, on-brand visuals that convert — faster and 10x cheaper than traditional shoots.
         </p>
 
-        <div class="hero-trust-signals">
-          <span class="trust-item">✓ 500+ brands worldwide</span>
-          <span class="trust-item">✓ 24-48h delivery</span>
-          <span class="trust-item">✓ 95% client retention</span>
+        <div class="hero-ctas">
+          <a href="/test-sample/" class="btn btn-primary">Order now</a>
+          <a href="/test-sample/" class="btn btn-secondary">Free test sample</a>
+          <a href={site.whatsapp.link} target="_blank" rel="noopener" class="btn btn-tertiary">WhatsApp</a>
         </div>
 
-        <div class="hero-ctas">
-          <a href="/test-sample/" class="btn btn-primary">
-            ⚡ Order Now
-          </a>
-          <a href="/test-sample/" class="btn btn-secondary">
-            🎁 Free Test Sample
-          </a>
-          <a href={site.whatsapp.link} target="_blank" rel="noopener" class="btn btn-tertiary">
-            📱 WhatsApp
-          </a>
+        <div class="hero-trust-signals">
+          <span class="trust-item"><strong>500+</strong> brands worldwide</span>
+          <span class="trust-divider" aria-hidden="true"></span>
+          <span class="trust-item"><strong>24–48h</strong> delivery</span>
+          <span class="trust-divider" aria-hidden="true"></span>
+          <span class="trust-item"><strong>95%</strong> client retention</span>
         </div>
       </div>
 
@@ -50,7 +46,7 @@ const site = {
           afterImage="/images/visuails-hero-after.webp"
           beforeAlt="Raw product photo before VISUAILS"
           afterAlt="Finished visual after VISUAILS transformation"
-          height="500px"
+          height="520px"
           autoPlay={false}
         />
         <p class="visual-caption">Drag to compare. Real VISUAILS output.</p>
@@ -61,67 +57,86 @@ const site = {
 
 <style>
   .hero-section {
-    padding: 80px 0;
+    padding: 120px 0;
     background: #FFFFFF;
     border-bottom: 1px solid var(--border-subtle);
   }
 
   .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 80px;
     align-items: center;
   }
 
   .hero-content {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 28px;
   }
 
   .hero-title {
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    font-weight: 700;
-    line-height: 1.2;
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 400;
+    line-height: 1.02;
+    letter-spacing: -0.01em;
     color: var(--text-primary);
     margin: 0;
   }
 
   .hero-title .accent {
     color: var(--brand-primary);
-    font-family: inherit;
-    font-style: normal;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
   }
 
   .hero-subtitle {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--text-secondary);
-    line-height: 1.6;
+    line-height: 1.65;
     margin: 0;
+    max-width: 34ch;
   }
 
   .hero-trust-signals {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 16px;
-    background: #F8F9FA;
-    border-radius: var(--radius-sm);
-    border-left: 4px solid var(--brand-primary);
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 8px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border-subtle);
   }
 
   .trust-item {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--text-tertiary);
+  }
+
+  .trust-item strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .trust-divider {
+    width: 1px;
+    height: 34px;
+    background: var(--border-subtle);
   }
 
   .hero-ctas {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
-    margin-top: 8px;
+    margin-top: 4px;
   }
 
   .btn {
@@ -197,25 +212,25 @@ const site = {
   @media (max-width: 1024px) {
     .hero-grid {
       grid-template-columns: 1fr;
-      gap: 48px;
+      gap: 56px;
     }
 
     .hero-section {
-      padding: 60px 0;
+      padding: 80px 0;
     }
   }
 
   @media (max-width: 640px) {
     .hero-section {
-      padding: 40px 0;
+      padding: 56px 0;
     }
 
     .hero-title {
-      font-size: 1.8rem;
+      font-size: clamp(2.6rem, 12vw, 3.2rem);
     }
 
     .hero-subtitle {
-      font-size: 1rem;
+      font-size: 1.05rem;
     }
 
     .hero-ctas {
@@ -228,12 +243,11 @@ const site = {
     }
 
     .hero-trust-signals {
-      gap: 6px;
-      padding: 12px;
+      gap: 14px;
     }
 
-    .trust-item {
-      font-size: 12px;
+    .trust-item strong {
+      font-size: 1.4rem;
     }
   }
 </style>

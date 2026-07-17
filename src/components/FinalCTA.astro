@@ -17,27 +17,27 @@ const site = {
     <!-- Contact CTA -->
     <div class="contact-section">
       <div class="contact-content">
-        <h2>Ready to Transform Your Product Photography?</h2>
+        <h2>Ready to transform your product photography?</h2>
         <p>Start with a free test sample, or dive right in. We're here to help.</p>
 
         <div class="contact-ctas">
           <a href="/test-sample/" class="btn btn-primary">
-            🎁 Free Test Sample (No credit card)
+            Free test sample — no credit card
           </a>
 
           <a href="/contact/" class="btn btn-secondary">
-            ✉️ Contact Us
+            Contact us
           </a>
 
           <a href={site.whatsapp.link} target="_blank" rel="noopener" class="btn btn-tertiary">
-            📱 WhatsApp Chat
+            WhatsApp chat
           </a>
         </div>
 
         <div class="support-info">
-          <p>💬 Live support • Mon-Fri 9-18 CET • Response time: <strong>&lt;1 hour</strong></p>
-          <p>📧 Email: hello@visuails.com</p>
-          <p>⭐ 4.9/5 rating from 48 reviews</p>
+          <p>Live support · Mon–Fri 9–18 CET · Response time: <strong>under 1 hour</strong></p>
+          <p>Email: hello@visuails.com</p>
+          <p>Rated 4.9/5 from 48 reviews</p>
         </div>
       </div>
 
@@ -68,19 +68,19 @@ const site = {
 
 <style>
   .final-cta {
-    padding: 80px 0;
+    padding: 120px 0;
     background: #F8F9FA;
   }
 
   .contact-section {
-    margin-top: 80px;
+    margin-top: 100px;
     background: #FFFFFF;
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius);
-    padding: 64px;
+    padding: 72px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 48px;
+    gap: 64px;
     align-items: center;
   }
 
@@ -91,7 +91,10 @@ const site = {
   }
 
   .contact-content h2 {
-    font-size: 2rem;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 2.4rem;
+    line-height: 1.05;
     color: var(--text-primary);
     margin: 0;
   }
@@ -211,8 +214,10 @@ const site = {
 
   .summary-value {
     display: block;
-    font-size: 28px;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
     color: var(--brand-primary);
   }
 
